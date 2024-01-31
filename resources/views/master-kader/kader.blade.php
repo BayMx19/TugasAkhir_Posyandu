@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h5 class="card-title fw-bold mb-4"><b>Master Kader</b>
                     </h5>
-                    <button type="button" class="btn btn-plus btn-primary m-1">+
+                    <button type="button" class="btn btn-plus btn-primary m-1"><i class="ti ti-plus"></i>
                         Tambah Kader</button>
 
                     <div class="card card-table">

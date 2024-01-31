@@ -5,10 +5,11 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title fw-bold mb-4"><b>Master Users</b>
+                    <h5 class="card-title fw-bold mb-4"><b>Pencatatan Perkembangan Anak</b>
                     </h5>
-                    <button type="button" class="btn btn-plus btn-primary m-1">+
-                        Tambah User</button>
+                    <button type="button" class="btn btn-plus btn-primary m-1"><i class="ti ti-plus"></i>
+                        Tambah Pencatatan</button>
+
 
                     <div class="card card-table">
                         <div class="card-body  p-4">
@@ -60,6 +61,11 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+
+                    <div class="floating-container">
+                        <div class="floating-button"><i class="ti ti-printer"></i></div>
+
                     </div>
 
                 </div>
