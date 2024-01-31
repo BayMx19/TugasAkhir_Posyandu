@@ -8,6 +8,6 @@ class PencatatanController extends Controller
 {
     public function index()
     {
-        return view('home');
+        return view('pencatatan.perkembangan');
     }
 }

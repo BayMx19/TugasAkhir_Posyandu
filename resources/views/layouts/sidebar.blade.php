@@ -25,7 +25,7 @@
                     <span class="hide-menu">Masters</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ '/master_users' }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-article"></i>
                         </span>
@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ '/master_kader' }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-alert-circle"></i>
                         </span>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ '/master_anak' }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-cards"></i>
                         </span>
@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ '/perkembangan' }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-user-plus"></i>
                         </span>
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item mt-5">
-                    <button type="button" class="btn btn-danger m-1">Logout</button>
+                    <button type="button" href="{{ 'logout' }}" class="btn btn-danger m-1">Logout</button>
 
                 </li>
             </ul>

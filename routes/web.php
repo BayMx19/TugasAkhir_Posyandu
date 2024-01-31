@@ -9,6 +9,7 @@ use App\Http\Controllers\AnakController;
 use App\Http\Controllers\PencatatanController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +28,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/master_users', [UsersController::class, 'index']);
+Route::get('/master_kader', [KaderController::class, 'index']);
+Route::get('/master_anak', [AnakController::class, 'index']);
+Route::get('/perkembangan', [PencatatanController::class, 'index']);

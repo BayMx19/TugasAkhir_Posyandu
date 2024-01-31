@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class AnakController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('master-anak.anak');
+    }
 }
