@@ -18,7 +18,7 @@ a {
 
   }
   .card-table {
-    margin-top: 1500px !important;
+    margin-top: 80px !important;
     background-color: transparent;
   }
   .card-body{
@@ -34,3 +34,24 @@ a {
   .font-bold {
     font-weight: 900 !important;
   }
+
+  .btn2{
+    width: 40px !important;
+  }
+
+  .header-sidebar{
+    max-width: 100%; /* Jangan melebihi lebar container */
+    height: auto;
+    margin-top:20px ;
+  }
+  .brand-logo{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  h5 {
+    margin-bottom: 0px !important;
+  }
+tr {
+    text-align: left !important;
+}

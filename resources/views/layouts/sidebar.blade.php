@@ -2,8 +2,7 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <p>Posyandu Kumis Kucing</p>
-
+            <img src="/assets/img/header_sidebar.png" class="header-sidebar mx-auto">
         </div>
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
@@ -27,7 +26,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/master_users' }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-article"></i>
+                            <i class="ti ti-users"></i>
                         </span>
                         <span class="hide-menu">Pengguna</span>
                     </a>
@@ -35,7 +34,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/master_kader' }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-alert-circle"></i>
+                            <i class="ti ti-user"></i>
                         </span>
                         <span class="hide-menu">Kader</span>
                     </a>
@@ -43,7 +42,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/master_anak' }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-cards"></i>
+                            <i class="ti ti-mood-kid"></i>
                         </span>
                         <span class="hide-menu">Anak</span>
                     </a>
@@ -57,7 +56,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/perkembangan' }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-user-plus"></i>
+                            <i class="ti ti-chart-dots"></i>
                         </span>
                         <span class="hide-menu">Perkembangan Anak</span>
                     </a>

@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AnakController extends Controller
 {
     public function index()
     {
-        return view('master-anak.anak');
+        $anak = DB::table('master_anak')->get();
+
+        return view('master-anak.anak', compact('anak'));
     }
 }

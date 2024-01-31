@@ -127,6 +127,14 @@
                 "searching": false,
 
             });
+            $(".myDatakader").DataTable({
+                "searching": false,
+
+            });
+            $(".myDataanak").DataTable({
+                "searching": false,
+
+            });
         });
     </script>
 </body>
