@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/style.css" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
@@ -88,9 +89,9 @@
         @include('layouts.sidebar')
         <div class="body-wrapper">
             @include('layouts.navbar')
+            @yield('content')
         </div>
         {{-- <main class="py-4">
-            @yield('content')
 
         </main> --}}
     </div>
@@ -107,6 +108,18 @@
     <script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="/assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="/assets/js/dashboard.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        function confirmLogout() {
+            var isConfirmed = confirm("Anda yakin untuk logout?");
+
+            if (isConfirmed) {
+                window.location.href = "{{ '/logout' }}";
+            } else {
+                alert("Logout dibatalkan.");
+            }
+        }
+    </script>
 </body>
 
 </html>

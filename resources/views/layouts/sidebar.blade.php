@@ -13,7 +13,7 @@
                     <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ '' }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ '/home' }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
@@ -63,7 +63,13 @@
                     </a>
                 </li>
                 <li class="sidebar-item mt-5">
-                    <button type="button" href="{{ 'logout' }}" class="btn btn-danger m-1">Logout</button>
+                    <span class="hide-menu">
+                        <a class="sidebar-link" aria-expanded="false" onclick="confirmLogout()">
+                            <button type="button" class="btn btn-danger m-1">
+                                Logout
+                            </button>
+                        </a>
+                    </span>
 
                 </li>
             </ul>

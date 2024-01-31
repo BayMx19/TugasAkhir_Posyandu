@@ -9,3 +9,7 @@ a {
     background: #00337c;
     border-radius: 5px;
   }
+
+  .btn {
+    width: 100% !important;
+  }

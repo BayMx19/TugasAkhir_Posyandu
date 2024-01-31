@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaderController;
 use App\Http\Controllers\UsersController;
@@ -24,6 +25,8 @@ use App\Http\Controllers\PencatatanController;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/logout', [LoginController::class, 'logout']);
+
 
 Auth::routes();
 
