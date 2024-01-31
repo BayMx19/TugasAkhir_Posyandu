@@ -13,3 +13,24 @@ a {
   .btn {
     width: 100% !important;
   }
+  .card {
+    border: transparent !important;
+
+  }
+  .card-table {
+    margin-top: 1500px !important;
+    background-color: transparent;
+  }
+  .card-body{
+    background-color: transparent !important;
+  }
+  .btn-plus {
+    width: 20% !important;
+    text-align: center;
+    float: right;
+    position: absolute;
+    right: 0px !important;
+  }
+  .font-bold {
+    font-weight: 900 !important;
+  }

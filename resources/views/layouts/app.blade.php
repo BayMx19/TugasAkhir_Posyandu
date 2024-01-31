@@ -120,6 +120,15 @@
             }
         }
     </script>
+    <script>
+        $(document).ready(function() {
+
+            $(".myDatausers").DataTable({
+                "searching": false,
+
+            });
+        });
+    </script>
 </body>
 
 </html>
