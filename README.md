@@ -21,7 +21,7 @@ Clone the repository
 
 Switch to the repo folder
 
-    cd laravel-realworld-example-app
+    cd TugasAkhir_Posyandu
 
 Install all the dependencies using composer
 
@@ -51,8 +51,8 @@ You can now access the server at http://localhost:8000
 
 **TL;DR command list**
 
-    git clone git@github.com:gothinkster/laravel-realworld-example-app.git
-    cd laravel-realworld-example-app
+    git clone https://github.com/BayMx19/TugasAkhir_Posyandu.git
+    cd TugasAkhir_Posyandu
     composer install
     cp .env.example .env
     php artisan key:generate
@@ -62,6 +62,7 @@ You can now access the server at http://localhost:8000
 
     php artisan migrate
     php artisan serve
+    npm run dev
 
 ## Database seeding
 
@@ -79,23 +80,7 @@ Run the database seeder and you're done
 
     php artisan migrate:refresh
     
-## Docker
 
-To install with [Docker](https://www.docker.com), run following commands:
-
-```
-git clone git@github.com:gothinkster/laravel-realworld-example-app.git
-cd laravel-realworld-example-app
-cp .env.example.docker .env
-docker run -v $(pwd):/app composer install
-cd ./docker
-docker-compose up -d
-docker-compose exec php php artisan key:generate
-docker-compose exec php php artisan jwt:generate
-docker-compose exec php php artisan migrate
-docker-compose exec php php artisan db:seed
-docker-compose exec php php artisan serve --host=0.0.0.0
-```
 
 The api can be accessed at [http://localhost:8000/api](http://localhost:8000/api).
 
@@ -116,25 +101,6 @@ More information regarding the project can be found here https://github.com/goth
 - [jwt-auth](https://github.com/tymondesigns/jwt-auth) - For authentication using JSON Web Tokens
 - [laravel-cors](https://github.com/barryvdh/laravel-cors) - For handling Cross-Origin Resource Sharing (CORS)
 
-## Folders
-
-- `app` - Contains all the Eloquent models
-- `app/Http/Controllers/Api` - Contains all the api controllers
-- `app/Http/Middleware` - Contains the JWT auth middleware
-- `app/Http/Requests/Api` - Contains all the api form requests
-- `app/RealWorld/Favorite` - Contains the files implementing the favorite feature
-- `app/RealWorld/Filters` - Contains the query filters used for filtering api requests
-- `app/RealWorld/Follow` - Contains the files implementing the follow feature
-- `app/RealWorld/Paginate` - Contains the pagination class used to paginate the result
-- `app/RealWorld/Slug` - Contains the files implementing slugs to articles
-- `app/RealWorld/Transformers` - Contains all the data transformers
-- `config` - Contains all the application configuration files
-- `database/factories` - Contains the model factory for all the models
-- `database/migrations` - Contains all the database migrations
-- `database/seeds` - Contains the database seeder
-- `routes` - Contains all the api routes defined in api.php file
-- `tests` - Contains all the application tests
-- `tests/Feature/Api` - Contains all the api tests
 
 ## Environment variables
 
