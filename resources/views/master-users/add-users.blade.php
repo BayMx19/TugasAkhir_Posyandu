@@ -15,28 +15,37 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username">
+                                            <label for="username" class="form-label">Username <label
+                                                    class="text-red">*</label></label>
+                                            <input type="text" class="form-control" id="username" name="username"
+                                                required>
 
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email">
+                                            <label for="email" class="form-label">Email <label
+                                                    class="text-red">*</label></label>
+                                            <input type="text" class="form-control" id="email" name="email"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="nama" class="form-label">Nama</label>
-                                            <input type="text" class="form-control" id="nama" name="nama">
+                                            <label for="nama" class="form-label">Nama <label
+                                                    class="text-red">*</label></label>
+                                            <input type="text" class="form-control" id="nama" name="nama"
+                                                required>
 
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="role" class="form-label">Role</label>
-                                            <select class="form-control" id="role" name="role">
+                                            <label for="role" class="form-label">Role <label
+                                                    class="text-red">*</label></label>
+                                            <select class="form-control" id="role" name="role" required>
+                                                <option value="" selected disabled>Pilih Role</option>
+
                                                 <option value="Kader">Kader</option>
                                                 <option value="SuperAdmin">SuperAdmin</option>
                                             </select>
@@ -46,8 +55,10 @@
 
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control " id="password" name="password">
+                                            <label for="password" class="form-label">Password <label
+                                                    class="text-red">*</label></label>
+                                            <input type="password" class="form-control " id="password" name="password"
+                                                required>
                                             <span class="password-toggle" onclick="togglePasswordVisibility()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" id="toggleIcon" width="16"
                                                     height="16" fill="currentColor" class="bi bi-eye"
@@ -63,7 +74,8 @@
 
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Status</label>
+                                            <label for="exampleInputEmail1" class="form-label">Status <label
+                                                    class="text-red">*</label></label>
                                             <div class="mt-1">
 
                                                 <div class="form-check form-check-inline">

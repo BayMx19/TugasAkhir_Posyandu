@@ -37,10 +37,10 @@
                                 <tbody>
                                     @foreach ($users as $u)
                                         <tr>
-                                            <td>{{ $u->nama }}</td>
-                                            <td>{{ $u->email }}</td>
-                                            <td>{{ $u->username }}</td>
-                                            <td>{{ $u->role }}</td>
+                                            <td>{{ $u->nama ?? '-' }}</td>
+                                            <td>{{ $u->email ?? '-' }}</td>
+                                            <td>{{ $u->username ?? '-' }}</td>
+                                            <td>{{ $u->role ?? '-' }}</td>
                                             <td style="color: {{ $u->status === 'active' ? 'green' : 'red' }}">
                                                 <b><b>
                                                         @if ($u->status === 'active')

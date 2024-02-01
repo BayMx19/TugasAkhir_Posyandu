@@ -32,7 +32,7 @@ Auth::routes();
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-
+// START USERS
 Route::get('/master_users', [UsersController::class, 'index']);
 Route::get('/add-users', function () {
     return view('master-users.add-users');
@@ -42,13 +42,18 @@ Route::post('/edit-users/{id}/update', [UsersController::class, 'update']);
 Route::get('/detail-users/{id}', [UsersController::class, 'detail']);
 Route::post('/add-users/store', [UsersController::class, 'input']);
 Route::get('/delete-users/{id}', [UsersController::class, 'delete'])->name('delete-user');
+// END USERS
 
-
-
+// START KADER
 Route::get('/master_kader', [KaderController::class, 'index']);
-Route::get('/add-kader', function () {
-    return view('master-kader.add-kader');
-});
+Route::get('/add-kader', [KaderController::class, 'addKader']);
+Route::post('/add-kader/store', [KaderController::class, 'input']);
+Route::get('/detail-kader/{id}', [KaderController::class, 'detail']);
+Route::get('/edit-kader/{id}', [KaderController::class, 'edit']);
+Route::post('/edit-kader/{id}/update', [KaderController::class, 'update']);
+Route::get('/delete-kader/{id}', [KaderController::class, 'delete'])->name('delete-kader');
+
+// END KADER
 
 Route::get('/master_anak', [AnakController::class, 'index']);
 Route::get('/add-anak', function () {

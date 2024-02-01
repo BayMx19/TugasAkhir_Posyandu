@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('master_kader', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('users_id')->comment('{"src":"master_users.id"}');
+            $table->string('email');
             $table->string('nama');
             $table->string('jabatan', 191);
             $table->date('tgl_gabung')->nullable();

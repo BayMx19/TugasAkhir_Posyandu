@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Tambah Users')
+@section('title', 'Edit Users')
 @section('content')
     <div class="container-fluid">
         <div class="container-fluid">
@@ -10,40 +10,47 @@
                     </h5>
                     <div class="card">
                         <div class="card-body">
-                            <form method="POST" action="/edit-users/{{ $user->id }}/update"
+                            <form method="POST" action="/edit-users/{{ encrypt($user->id) }}/update"
                                 enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="username" class="form-label">Username</label>
+                                            <label for="username" class="form-label">Username <label
+                                                    class="text-red">*</label></label>
                                             <input type="text" class="form-control" id="username"
-                                                value="{{ $user->username }}" name="username">
+                                                value="{{ $user->username }}" name="username" required>
 
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
+                                            <label for="email" class="form-label">Email <label
+                                                    class="text-red">*</label></label>
                                             <input type="text" value="{{ $user->email }}"class="form-control"
-                                                id="email" name="email">
+                                                id="email" name="email" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="nama" class="form-label">Nama</label>
+                                            <label for="nama" class="form-label">Nama <label
+                                                    class="text-red">*</label></label>
                                             <input type="text" value="{{ $user->nama }}" class="form-control"
-                                                id="nama" name="nama">
+                                                id="nama" name="nama" required>
 
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="role" class="form-label">Role</label>
+                                            <label for="role" class="form-label">Role <label
+                                                    class="text-red">*</label></label>
                                             <select class="form-control" id="role" value="{{ $user->role }}"
-                                                name="role">
-                                                <option value="Kader">Kader</option>
-                                                <option value="SuperAdmin">SuperAdmin</option>
+                                                name="role" required>
+
+                                                <option value="Kader" {{ $user->role == 'Kader' ? 'selected' : '' }}>Kader
+                                                </option>
+                                                <option value="SuperAdmin"
+                                                    {{ $user->role == 'SuperAdmin' ? 'selected' : '' }}>SuperAdmin</option>
                                             </select>
 
                                         </div>
@@ -51,9 +58,10 @@
 
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="password" class="form-label">Password</label>
+                                            <label for="password" class="form-label">Password <label
+                                                    class="text-red">*</label></label>
                                             <input type="password" class="form-control " value="{{ $user->password }}"
-                                                id="password" name="password">
+                                                id="password" name="password" readonly>
                                             <span class="password-toggle" onclick="togglePasswordVisibility()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" id="toggleIcon" width="16"
                                                     height="16" fill="currentColor" class="bi bi-eye"
@@ -69,7 +77,8 @@
 
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Status</label>
+                                            <label for="exampleInputEmail1" class="form-label">Status <label
+                                                    class="text-red">*</label></label>
                                             <div class="mt-1">
 
                                                 <div class="form-check form-check-inline">

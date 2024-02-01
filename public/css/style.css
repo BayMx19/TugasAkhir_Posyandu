@@ -218,6 +218,9 @@ html, body {
     cursor: pointer;
 }
 
+.text-red {
+    color: red !important;
+}
 
 
 

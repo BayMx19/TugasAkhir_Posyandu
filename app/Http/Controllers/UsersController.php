@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\QueryException;
 use App\Models\MasterUsers;
+use Illuminate\Support\Facades\Log;
 class UsersController extends Controller
 {
     public function index()
@@ -54,6 +55,7 @@ class UsersController extends Controller
     }
     public function edit($id)
     {
+        try {
         $decryptedId = decrypt($id);
         $user = MasterUsers::find($decryptedId);
         if (!$user) {
@@ -61,11 +63,16 @@ class UsersController extends Controller
         }
 
         return view('master-users.edit-users', compact('user'));
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            Log::error('Decryption error: ' . $e->getMessage());
+            return abort(500, 'Error: Unable to decrypt the ID.');
+        }
 
     }
 
     public function update(Request $request, $id)
     {
+        try {
         // return $request;
         $decryptedId = decrypt($id);
         $user = MasterUsers::find($decryptedId);
@@ -73,7 +80,7 @@ class UsersController extends Controller
         if (!$user) {
             return abort(404);
         }
-        DB::table('master_users')->where('id', $request->id)->update([
+        DB::table('master_users')->where('id', $decryptedId)->update([
             'username' => $request->username,
             'email' => $request->email,
             'nama' => $request->nama,
@@ -83,6 +90,9 @@ class UsersController extends Controller
             'updated_at' => Carbon::now(),
         ]);
         return redirect('/master_users')->with('success', 'Berhasil edit User.');
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            return abort(500, 'Error: Unable to decrypt the ID.');
+        }
     }
 
     public function delete($id)

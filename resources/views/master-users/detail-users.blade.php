@@ -39,11 +39,8 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="role" class="form-label">Role</label>
-                                            <select class="form-control" id="role" value="{{ $user->role }}"
-                                                name="role" disabled>
-                                                <option value="Kader">Kader</option>
-                                                <option value="SuperAdmin">SuperAdmin</option>
-                                            </select>
+                                            <input type="text" value="{{ $user->role }}" class="form-control"
+                                                id="role" name="role" disabled>
 
                                         </div>
                                     </div>
