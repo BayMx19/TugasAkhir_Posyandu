@@ -5,6 +5,15 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
+                    @if (session('success'))
+                        <div id="success-alert" class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @elseif (session('error'))
+                        <div id="error-alert" class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <h5 class="card-title fw-bold mb-4"><b>Master Anak</b>
                     </h5>
                     <a href="{{ '/add-anak' }}"><button type="button" class="btn btn-plus btn-primary m-1"><i
@@ -16,22 +25,22 @@
                             <table class="table datatable-primary text-center myDataanak" id="myDataanak">
                                 <thead class="text-uppercase bg-primary">
                                     <tr class="text-white">
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Username</th>
-                                        <th scope="col">Role</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Nama Anak</th>
+                                        <th scope="col">Nama Ibu</th>
+                                        <th scope="col">Jenis Kelamin</th>
+                                        <th scope="col">Umur</th>
+                                        <th scope="col">Kondisi</th>
                                         <th scope="col" class="no-sort">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($anak as $a)
                                         <tr>
-                                            <td>{{ $a->nama }}</td>
-                                            <td>{{ $a->email }}</td>
-                                            <td>{{ $a->username }}</td>
-                                            <td>{{ $a->role }}</td>
-                                            <td>{{ $a->status }}</td>
+                                            <td>{{ $a->nama_anak ?? '-' }}</td>
+                                            <td>{{ $a->nama_ibu ?? '-' }}</td>
+                                            <td>{{ $a->jk ?? '-' }}</td>
+                                            <td>{{ $a->umur ?? '-' }}</td>
+                                            <td>{{ $a->kondisi ?? '-' }}</td>
 
 
 

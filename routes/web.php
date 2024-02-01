@@ -56,9 +56,9 @@ Route::get('/delete-kader/{id}', [KaderController::class, 'delete'])->name('dele
 // END KADER
 
 Route::get('/master_anak', [AnakController::class, 'index']);
-Route::get('/add-anak', function () {
-    return view('master-anak.add-anak');
-});
+Route::get('/add-anak', [AnakController::class, 'addAnak']);
+Route::post('/add-anak/store', [AnakController::class, 'input']);
+
 
 Route::get('/perkembangan', [PencatatanController::class, 'index']);
 Route::get('/add-perkembangan', function () {
