@@ -40,17 +40,25 @@
                                             <td>{{ $a->nama_ibu ?? '-' }}</td>
                                             <td>{{ $a->jk ?? '-' }}</td>
                                             <td>{{ $a->umur ?? '-' }}</td>
-                                            <td>{{ $a->kondisi ?? '-' }}</td>
+                                            <td style="color: {{ $a->kondisi === 'hidup' ? 'green' : 'red' }}">
+                                                <b><b>
+                                                        @if ($a->kondisi === 'hidup')
+                                                            Hidup
+                                                        @else
+                                                            Meninggal
+                                                        @endif
+                                                    </b></b>
+                                            </td>
 
 
 
                                             <td>
-                                                <a href="/detail-users"><button class="btn btn2 btn-success"><i
-                                                            class="ti ti-eye"></i></button></a>
-                                                <a href="/detail-users"><button class="btn btn2 btn-primary"><i
-                                                            class="ti ti-edit"></i></button></a>
-                                                <a href="/master-users/delete/"><button class="btn btn2 btn-danger"><i
-                                                            class="ti ti-trash"></i></button></a>
+                                                <a href="/detail-anak/{{ encrypt($a->id) }}"><button
+                                                        class="btn btn2 btn-success"><i class="ti ti-eye"></i></button></a>
+                                                <a href="/edit-anak/{{ encrypt($a->id) }}"><button
+                                                        class="btn btn2 btn-primary"><i class="ti ti-edit"></i></button></a>
+                                                <a href="/delete-anak/{{ encrypt($a->id) }}"><button
+                                                        class="btn btn2 btn-danger"><i class="ti ti-trash"></i></button></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -65,4 +73,20 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successAlert = document.getElementById('success-alert');
+            var errorAlert = document.getElementById('error-alert');
+            if (successAlert) {
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
+            if (errorAlert) {
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
+        });
+    </script>
 @endsection

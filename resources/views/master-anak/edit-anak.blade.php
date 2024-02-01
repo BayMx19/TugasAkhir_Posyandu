@@ -1,16 +1,17 @@
 @extends('layouts.app')
-@section('title', 'Detail Anak')
+@section('title', 'Edit Anak')
 @section('content')
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title fw-bold mb-4"><a href="{{ '/master_anak' }}"><button class="btn btn2 btn-primary"><i
-                                    class="ti ti-arrow-left"></i></button></a> <b class="mx-2">Detail Anak</b>
+                                    class="ti ti-arrow-left"></i></button></a> <b class="mx-2">Edit Anak</b>
                     </h5>
                     <div class="card">
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="/edit-anak/{{ encrypt($anak->id) }}/update"
+                                enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -20,7 +21,7 @@
                                             <input type="date" class="form-control" value="{{ $anak->tgl_daftar }}"
                                                 id="tgl_daftar" name="tgl_daftar" disabled>
                                             <input type="hidden" name="tgl_daftar" id="tgl_daftar"
-                                                value="{{ $anak->tgl_daftar }}}">
+                                                value="{{ $anak->tgl_daftar }}">
 
                                         </div>
                                     </div>
@@ -31,7 +32,7 @@
                                             <input type="text" class="form-control" value="{{ $anak->pencatat }}"
                                                 id="nama_anak" name="nama_anak" disabled>
                                             <input type="hidden" name="pencatat" id="pencatat"
-                                                value="{{ $anak->pencatat }}}">
+                                                value="{{ $anak->pencatat }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -39,21 +40,21 @@
                                             <label for="nama_anak" class="form-label">Nama Anak <label
                                                     class="text-red">*</label></label>
                                             <input type="text" class="form-control" id="nama_anak"
-                                                value="{{ $anak->nama_anak }}" name="nama_anak" required disabled>
+                                                value="{{ $anak->nama_anak }}" name="nama_anak" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="nik_anak" class="form-label">NIK Anak </label>
                                             <input type="text" class="form-control" id="nik_anak"
-                                                value="{{ $anak->nik_anak }}" name="nik_anak" disabled>
+                                                value="{{ $anak->nik_anak }}" name="nik_anak">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="tempat_lahir" class="form-label">Tempat Lahir </label>
                                             <input type="text" class="form-control" id="tempat_lahir"
-                                                value="{{ $anak->tempat_lahir }}" name="tempat_lahir" disabled>
+                                                value="{{ $anak->tempat_lahir }}" name="tempat_lahir">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -62,7 +63,7 @@
                                                     class="text-red">*</label></label>
                                             <input type="date" class="form-control" id="tgl_lahir"
                                                 onchange="calculateAge()" name="tgl_lahir" value="{{ $anak->tgl_lahir }}"
-                                                required disabled>
+                                                required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -84,13 +85,13 @@
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="kondisi"
                                                         id="hidup" value="hidup"
-                                                        @if ($anak->kondisi == 'hidup') checked @endif disabled>
+                                                        @if ($anak->kondisi == 'hidup') checked @endif>
                                                     <label class="form-check-label" for="hidup">Hidup</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="kondisi"
                                                         id="meninggal" value="meninggal"
-                                                        @if ($anak->kondisi == 'meninggal') checked @endif disabled>
+                                                        @if ($anak->kondisi == 'meninggal') checked @endif>
                                                     <label class="form-check-label" for="meninggal">Meninggal</label>
                                                 </div>
 
@@ -102,7 +103,7 @@
                                         <div class="mb-3">
                                             <label for="jk" class="form-label">Jenis Kelamin <label
                                                     class="text-red">*</label></label>
-                                            <select class="form-control" id="jk" name="jk" required disabled>
+                                            <select class="form-control" id="jk" name="jk" required>
                                                 <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                                 <option value="Laki-Laki"
                                                     {{ $anak->jk == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
@@ -116,7 +117,7 @@
                                         <div class="mb-3">
                                             <label for="alamat" class="form-label">Alamat Rumah</label>
                                             <input type="text" class="form-control" id="alamat" name="alamat"
-                                                disabled value="{{ $anak->alamat }}">
+                                                value="{{ $anak->alamat }}">
 
                                         </div>
                                     </div>
@@ -124,7 +125,7 @@
                                         <div class="mb-3">
                                             <label for="provinsi" class="form-label">Provinsi </label>
                                             <input type="text" class="form-control" id="provinsi" name="provinsi"
-                                                disabled value="{{ $anak->provinsi }}">
+                                                value="{{ $anak->provinsi }}">
 
                                         </div>
                                     </div>
@@ -132,7 +133,7 @@
                                         <div class="mb-3">
                                             <label for="kota" class="form-label">Kota </label>
                                             <input type="text" class="form-control" id="kota" name="kota"
-                                                disabled value="{{ $anak->kota }}">
+                                                value="{{ $anak->kota }}">
 
                                         </div>
                                     </div>
@@ -140,7 +141,7 @@
                                         <div class="mb-3">
                                             <label for="kecamatan" class="form-label">Kecamatan </label>
                                             <input type="text" class="form-control" id="kecamatan" name="kecamatan"
-                                                disabled value="{{ $anak->kecamatan }}">
+                                                value="{{ $anak->kecamatan }}">
 
                                         </div>
                                     </div>
@@ -148,7 +149,7 @@
                                         <div class="mb-3">
                                             <label for="kelurahan" class="form-label">Kelurahan </label>
                                             <input type="text" class="form-control" id="kelurahan" name="kelurahan"
-                                                disabled value="{{ $anak->kelurahan }}">
+                                                value="{{ $anak->kelurahan }}">
 
                                         </div>
                                     </div>
@@ -156,7 +157,7 @@
                                         <div class="mb-3">
                                             <label for="tipe_tt" class="form-label">Tipe Tempat Tinggal <label
                                                     class="text-red">*</label></label>
-                                            <select class="form-control" id="tipe_tt" name="tipe_tt" required disabled>
+                                            <select class="form-control" id="tipe_tt" name="tipe_tt" required>
                                                 <option value="" selected disabled>Pilih Tipe Tempat Tinggal
                                                 </option>
                                                 <option value="Perkotaan"
@@ -172,7 +173,7 @@
                                         <div class="mb-3">
                                             <label for="posyandu" class="form-label">Posyandu</label>
                                             <input type="text" class="form-control" id="posyandu" name="posyandu"
-                                                readonly disabled value="{{ $anak->posyandu }}">
+                                                readonly value="{{ $anak->posyandu }}">
                                             <input type="hidden" class="form-control" id="posyandu" name="posyandu"
                                                 readonly value="{{ $anak->posyandu }}">
 
@@ -182,9 +183,8 @@
                                         <div class="mb-3">
                                             <label for="kelahiran_ke" class="form-label">Kelahiran Ke? <label
                                                     class="text-red">*</label></label>
-                                            <select class="form-control" id="kelahiran_ke" name="kelahiran_ke" required
-                                                disabled>
-                                                <option value="" selected disabled>Pilih Kelahiran</option>
+                                            <select class="form-control" id="kelahiran_ke" name="kelahiran_ke" required>
+                                                <option value="" disabled selected>Pilih Kelahiran</option>
                                                 <option value="Pertama"
                                                     {{ $anak->kelahiran_ke == 'Pertama' ? 'selected' : '' }}>Pertama
                                                 </option>
@@ -202,8 +202,8 @@
                                         <div class="mb-3">
                                             <label for="kembar" class="form-label">Anak Kembar? <label
                                                     class="text-red">*</label></label>
-                                            <select class="form-control" id="kembar" name="kembar" required disabled>
-                                                <option value="" selected disabled>Apakah Anak Kembar?</option>
+                                            <select class="form-control" id="kembar" name="kembar" required>
+                                                <option value="" disabled selected>Apakah Anak Kembar?</option>
                                                 <option value="Tidak" {{ $anak->kembar == 'Tidak' ? 'selected' : '' }}>
                                                     Tidak</option>
                                                 <option value="Kembar Pertama"
@@ -223,14 +223,14 @@
                                             <label for="nama_ibu" class="form-label">Nama Ibu <label
                                                     class="text-red">*</label></label>
                                             <input type="text" class="form-control" id="nama_ibu" name="nama_ibu"
-                                                disabled value="{{ $anak->nama_ibu }}">
+                                                value="{{ $anak->nama_ibu }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 mt-3">
                                         <div class="mb-3">
                                             <label for="nik_ibu" class="form-label">NIK Ibu </label>
                                             <input type="text" class="form-control" id="nik_ibu" name="nik_ibu"
-                                                disabled value="{{ $anak->nik_ibu }}">
+                                                value="{{ $anak->nik_ibu }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 ">
@@ -238,7 +238,7 @@
                                             <label for="tgl_lahir_ibu" class="form-label">Tanggal Lahir Ibu <label
                                                     class="text-red">*</label></label>
                                             <input type="date" class="form-control" id="tgl_lahir_ibu"
-                                                name="tgl_lahir_ibu" onchange="calculateAgeIbu()" required disabled
+                                                name="tgl_lahir_ibu" onchange="calculateAgeIbu()" required
                                                 value="{{ $anak->tgl_lahir_ibu }}">
                                         </div>
                                     </div>
@@ -246,7 +246,7 @@
                                         <div class="mb-3">
                                             <label for="umur_ibu" class="form-label">Umur Ibu </label>
                                             <input type="text" class="form-control" id="umurDisplay_ibu"
-                                                name="umurDisplay_ibu" readonly disabled value="{{ $anak->umur_ibu }}">
+                                                name="umurDisplay_ibu" readonly value="{{ $anak->umur_ibu }}">
                                             <input type="hidden" class="form-control" id="umur_ibu" name="umur_ibu">
 
                                         </div>
@@ -255,9 +255,8 @@
                                         <div class="mb-3">
                                             <label for="ibu_bekerja" class="form-label">Apakah Ibu Bekerja? <label
                                                     class="text-red">*</label></label>
-                                            <select class="form-control" id="ibu_bekerja" name="ibu_bekerja" required
-                                                disabled>
-                                                <option value="" selected disabled>Apakah Ibu Bekerja?</option>
+                                            <select class="form-control" id="ibu_bekerja" name="ibu_bekerja" required>
+                                                <option value="" disabled selected>Apakah Ibu Bekerja?</option>
                                                 <option value="Ya" {{ $anak->ibu_bekerja == 'Ya' ? 'selected' : '' }}>
                                                     Ya</option>
                                                 <option value="Tidak"
@@ -270,9 +269,26 @@
                                         <div class="mb-3">
                                             <label for="pendidikan_ibu" class="form-label">Pendidikan Terakhir Ibu
                                                 <label class="text-red">*</label></label>
-                                            <input type="text" class="form-control" id="pendidikan_ibu"
-                                                name="pendidikan_ibu" readonly disabled
-                                                value="{{ $anak->pendidikan_ibu }}">
+                                            <select class="form-control" id="pendidikan_ibu" name="pendidikan_ibu"
+                                                required>
+                                                <option value="" selected>Pilih Pendidikan Terakhir Ibu
+                                                </option>
+                                                <option value="Tidak Bersekolah"
+                                                    {{ $anak->pendidikan_ibu == 'Tidak Bersekolah' ? 'selected' : '' }}>
+                                                    Tidak Bersekolah</option>
+                                                <option value="SD"
+                                                    {{ $anak->pendidikan_ibu == 'SD' ? 'selected' : '' }}>SD</option>
+                                                <option value="SMP"
+                                                    {{ $anak->pendidikan_ibu == 'SMP' ? 'selected' : '' }}>SMP</option>
+                                                <option value="SMA"
+                                                    {{ $anak->pendidikan_ibu == 'SMA' ? 'selected' : '' }}>SMA</option>
+                                                <option value="S1"
+                                                    {{ $anak->pendidikan_ibu == 'S1' ? 'selected' : '' }}>S1</option>
+                                                <option value="S2"
+                                                    {{ $anak->pendidikan_ibu == 'S2' ? 'selected' : '' }}>S2</option>
+                                                <option value="S3"
+                                                    {{ $anak->pendidikan_ibu == 'S3' ? 'selected' : '' }}>S3</option>
+                                            </select>
 
                                         </div>
                                     </div>
@@ -284,14 +300,14 @@
                                             <label for="nama_ayah" class="form-label">Nama Ayah <label
                                                     class="text-red">*</label></label>
                                             <input type="text" class="form-control" id="nama_ayah" name="nama_ayah"
-                                                disabled value="{{ $anak->nama_ayah }}">
+                                                value="{{ $anak->nama_ayah }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 mt-3">
                                         <div class="mb-3">
                                             <label for="nik_ayah" class="form-label">NIK Ayah </label>
                                             <input type="text" class="form-control" id="nik_ayah" name="nik_ayah"
-                                                disabled value="{{ $anak->nik_ayah }}">
+                                                value="{{ $anak->nik_ayah }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 ">
@@ -299,7 +315,7 @@
                                             <label for="tgl_lahir_ayah" class="form-label">Tanggal Lahir Ayah <label
                                                     class="text-red">*</label></label>
                                             <input type="date" class="form-control" id="tgl_lahir_ayah"
-                                                name="tgl_lahir_ayah" onchange="calculateAgeAyah()" required disabled
+                                                name="tgl_lahir_ayah" onchange="calculateAgeAyah()" required
                                                 value="{{ $anak->tgl_lahir_ayah }}">
                                         </div>
                                     </div>
@@ -307,9 +323,8 @@
                                         <div class="mb-3">
                                             <label for="umur_ayah" class="form-label">Umur Ayah </label>
                                             <input type="text" class="form-control" id="umurDisplay_ayah"
-                                                name="umur_ayah" readonly disabled value="{{ $anak->umur_ayah }}">
-                                            <input type="hidden" class="form-control" id="umur_ayah" name="umur_ayah"
-                                                disabled>
+                                                name="umur_ayah" readonly value="{{ $anak->umur_ayah }}">
+                                            <input type="hidden" class="form-control" id="umur_ayah" name="umur_ayah">
 
                                         </div>
                                     </div>
@@ -317,9 +332,8 @@
                                         <div class="mb-3">
                                             <label for="ayah_bekerja" class="form-label">Apakah Ayah Bekerja? <label
                                                     class="text-red">*</label></label>
-                                            <select class="form-control" id="ayah_bekerja" name="ayah_bekerja" required
-                                                disabled>
-                                                <option value="" selected disabled>Apakah ayah Bekerja?</option>
+                                            <select class="form-control" id="ayah_bekerja" name="ayah_bekerja" required>
+                                                <option value="" selected>Apakah ayah Bekerja?</option>
                                                 <option value="Ya"
                                                     {{ $anak->ayah_bekerja == 'Ya' ? 'selected' : '' }}>Ya</option>
                                                 <option value="Tidak"
@@ -332,9 +346,9 @@
                                         <div class="mb-3">
                                             <label for="pendidikan_ayah" class="form-label">Pendidikan Terakhir Ayah
                                                 <label class="text-red">*</label></label>
-                                            {{-- <select class="form-control" id="pendidikan_ayah" name="pendidikan_ayah"
-                                                required disabled>
-                                                <option value="" selected disabled>Pilih Pendidikan Terakhir Ayah
+                                            <select class="form-control" id="pendidikan_ayah" name="pendidikan_ayah"
+                                                required>
+                                                <option value="" selected>Pilih Pendidikan Terakhir Ayah
                                                 </option>
                                                 <option value="Tidak Bersekolah"
                                                     {{ $anak->pendidikan_ayah == 'Tidak Bersekolah' ? 'selected' : '' }}>
@@ -350,11 +364,8 @@
                                                 <option value="S2"
                                                     {{ $anak->pendidikan_ayah == 'S2' ? 'selected' : '' }}>S2</option>
                                                 <option value="S3"
-                                                    {{ $anak->pendidikan_ayah == 'S2' ? 'selected' : '' }}>S3</option>
-                                            </select> --}}
-                                            <input type="text" class="form-control" id="pendidikan_ayah"
-                                                name="pendidikan_ayah" readonly disabled
-                                                value="{{ $anak->pendidikan_ayah }}">
+                                                    {{ $anak->pendidikan_ayah == 'S3' ? 'selected' : '' }}>S3</option>
+                                            </select>
 
                                         </div>
                                     </div>
@@ -368,7 +379,7 @@
 
 
 
-                                <button type="submit" class="btn btn-primary mt-3" disabled>Simpan</button>
+                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                             </form>
                         </div>
                     </div>

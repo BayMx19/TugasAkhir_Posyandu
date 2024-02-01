@@ -55,10 +55,17 @@ Route::get('/delete-kader/{id}', [KaderController::class, 'delete'])->name('dele
 
 // END KADER
 
+
+// START ANAK
 Route::get('/master_anak', [AnakController::class, 'index']);
 Route::get('/add-anak', [AnakController::class, 'addAnak']);
 Route::post('/add-anak/store', [AnakController::class, 'input']);
+Route::get('/detail-anak/{id}', [AnakController::class, 'detail']);
+Route::get('/edit-anak/{id}', [AnakController::class, 'edit']);
+Route::post('/edit-anak/{id}/update', [AnakController::class, 'update']);
+Route::get('/delete-anak/{id}', [AnakController::class, 'delete'])->name('delete-kader');
 
+// END ANAK
 
 Route::get('/perkembangan', [PencatatanController::class, 'index']);
 Route::get('/add-perkembangan', function () {
