@@ -7,8 +7,9 @@
                 <div class="card-body">
                     <h5 class="card-title fw-bold mb-4"><b>Pencatatan Perkembangan Anak</b>
                     </h5>
-                    <button type="button" class="btn btn-plus btn-primary m-1"><i class="ti ti-plus"></i>
-                        Tambah Pencatatan</button>
+                    <a href="{{ '/add-perkembangan' }}"><button type="button" class="btn btn-plus btn-primary m-1"><i
+                                class="ti ti-plus"></i>
+                            Tambah Pencatatan</button></a>
 
 
                     <div class="card card-table">
