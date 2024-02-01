@@ -190,8 +190,33 @@ html, body {
   box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
 }
 
+.form-control {
+    position: relative;
+}
 
+.form-control::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000;
+    left: calc(100% - 20px);
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.password-container {
+    position: relative;
+}
 
+.password-toggle {
+    position: absolute;
+    left: 500px;
+    top: 69%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 
 
 

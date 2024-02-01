@@ -37,9 +37,11 @@ Route::get('/master_users', [UsersController::class, 'index']);
 Route::get('/add-users', function () {
     return view('master-users.add-users');
 });
-Route::get('/detail-users', function () {
-    return view('master-users.detail-users');
-});
+Route::get('/edit-users/{id}', [UsersController::class, 'edit']);
+Route::post('/edit-users/{id}/update', [UsersController::class, 'update']);
+Route::get('/detail-users/{id}', [UsersController::class, 'detail']);
+Route::post('/add-users/store', [UsersController::class, 'input']);
+Route::get('/master-users/delete/{id}', [UsersController::class, 'delete'])->name('delete-user');
 
 
 

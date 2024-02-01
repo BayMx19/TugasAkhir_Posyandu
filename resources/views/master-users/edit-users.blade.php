@@ -1,23 +1,24 @@
 @extends('layouts.app')
-@section('title', 'Detail Users')
+@section('title', 'Tambah Users')
 @section('content')
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title fw-bold mb-4"><a href="{{ '/master_users' }}"><button class="btn btn2 btn-primary"><i
-                                    class="ti ti-arrow-left"></i></button></a> <b class="mx-2">Detail User</b>
+                                    class="ti ti-arrow-left"></i></button></a> <b class="mx-2">Edit User</b>
                     </h5>
                     <div class="card">
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="/edit-users/{{ $user->id }}/update"
+                                enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
                                             <input type="text" class="form-control" id="username"
-                                                value="{{ $user->username }}" name="username" disabled>
+                                                value="{{ $user->username }}" name="username">
 
                                         </div>
                                     </div>
@@ -25,14 +26,14 @@
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="text" value="{{ $user->email }}"class="form-control"
-                                                id="email" name="email" disabled>
+                                                id="email" name="email">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="nama" class="form-label">Nama</label>
                                             <input type="text" value="{{ $user->nama }}" class="form-control"
-                                                id="nama" name="nama" disabled>
+                                                id="nama" name="nama">
 
                                         </div>
                                     </div>
@@ -40,7 +41,7 @@
                                         <div class="mb-3">
                                             <label for="role" class="form-label">Role</label>
                                             <select class="form-control" id="role" value="{{ $user->role }}"
-                                                name="role" disabled>
+                                                name="role">
                                                 <option value="Kader">Kader</option>
                                                 <option value="SuperAdmin">SuperAdmin</option>
                                             </select>
@@ -51,9 +52,9 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control " id="password" name="password"
-                                                disabled>
-                                            <span class="password-toggle" onclick="togglePasswordVisibility()" disabled>
+                                            <input type="password" class="form-control " value="{{ $user->password }}"
+                                                id="password" name="password">
+                                            <span class="password-toggle" onclick="togglePasswordVisibility()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" id="toggleIcon" width="16"
                                                     height="16" fill="currentColor" class="bi bi-eye"
                                                     viewBox="0 0 16 16">
@@ -74,13 +75,13 @@
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="status"
                                                         id="status_active" value="active"
-                                                        @if ($user->status == 'active') checked @endif disabled>
+                                                        @if ($user->status == 'active') checked @endif>
                                                     <label class="form-check-label" for="status_active">Aktif</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="status"
                                                         id="status_inactive" value="inactive"
-                                                        @if ($user->status == 'inactive') checked @endif disabled>
+                                                        @if ($user->status == 'inactive') checked @endif>
                                                     <label class="form-check-label" for="status_inactive">Tidak
                                                         Aktif</label>
                                                 </div>
@@ -95,7 +96,7 @@
 
 
 
-                                <button type="submit" class="btn btn-primary mt-3" disabled>Simpan</button>
+                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                             </form>
                         </div>
                     </div>

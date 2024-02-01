@@ -1,10 +1,20 @@
 @extends('layouts.app')
 @section('title', 'Master Users')
 @section('content')
+
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
+                    @if (session('success'))
+                        <div id="success-alert" class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @elseif (session('error'))
+                        <div id="error-alert" class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <h5 class="card-title fw-bold mb-4"><b>Master Users</b>
                     </h5>
                     <a href="{{ '/add-users' }}"><button type="button" class="btn btn-plus btn-primary m-1"><i
@@ -32,18 +42,24 @@
                                             <td>{{ $u->username }}</td>
                                             <td>{{ $u->role }}</td>
                                             <td style="color: {{ $u->status === 'active' ? 'green' : 'red' }}">
-                                                <b>{{ $u->status }}</b>
+                                                <b><b>
+                                                        @if ($u->status === 'active')
+                                                            Aktif
+                                                        @else
+                                                            Tidak Aktif
+                                                        @endif
+                                                    </b></b>
                                             </td>
 
 
 
                                             <td>
-                                                <a href="/detail-users"><button class="btn btn2 btn-success"><i
-                                                            class="ti ti-eye"></i></button></a>
-                                                <a href="/detail-users"><button class="btn btn2 btn-primary"><i
-                                                            class="ti ti-edit"></i></button></a>
-                                                <a href="/master-users/delete/"><button class="btn btn2 btn-danger"><i
-                                                            class="ti ti-trash"></i></button></a>
+                                                <a href="/detail-users/{{ $u->id }}"><button
+                                                        class="btn btn2 btn-success"><i class="ti ti-eye"></i></button></a>
+                                                <a href="/edit-users/{{ $u->id }}"><button
+                                                        class="btn btn2 btn-primary"><i class="ti ti-edit"></i></button></a>
+                                                <a href="/master-users/delete/{{ $u->id }}"><button
+                                                        class="btn btn2 btn-danger"><i class="ti ti-trash"></i></button></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -58,4 +74,20 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successAlert = document.getElementById('success-alert');
+            var errorAlert = document.getElementById('error-alert');
+            if (successAlert) {
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
+            if (errorAlert) {
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
+        });
+    </script>
 @endsection

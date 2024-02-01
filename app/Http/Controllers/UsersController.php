@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Carbon;
+use Illuminate\Database\QueryException;
+use App\Models\MasterUsers;
 class UsersController extends Controller
 {
     public function index()
@@ -22,30 +24,52 @@ class UsersController extends Controller
 
     public function input(Request $request)
     {
-        // return $request;
-        DB::table('master_users')->insert([
-            'username' => $request->username,
-            'email' => $request->email,
-            'nama' => $request->nama,
-            'password' => Hash::make($request['password']),
-            'role' => $request->role,
-            'status' => $request->status,
+        try {
+            DB::table('master_users')->insert([
+                'username' => $request->username,
+                'email' => $request->email,
+                'nama' => $request->nama,
+                'password' => Hash::make($request['password']),
+                'role' => $request->role,
+                'status' => $request->status,
+                'created_at' => Carbon::now(),
+            ]);
 
-
-        ]);
-        return redirect('/master-users.users')->with('success', 'Berhasil menambahkan User.');
+            return redirect('/master_users')->with('success', 'Berhasil menambahkan User.');
+        } catch (QueryException $e) {
+            return redirect('/master_users')->with('error', 'Gagal menambahkan User: Coba Lagi' );
+        }
     }
+    public function detail($id)
+    {
+        $user = MasterUsers::find($id);
+        // dd($user);
 
+        if (!$user) {
+            return abort(404);
+        }
+
+        return view('master-users.detail-users', compact('user'));
+    }
     public function edit($id)
     {
-        $users = DB::table('master_users')->where('id', $id)->get();
+        $user = MasterUsers::find($id);
+        if (!$user) {
+            return abort(404);
+        }
 
-        return view('/master-users.detail-users', ['users' => $users[0]]);
+        return view('master-users.edit-users', compact('user'));
+
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         // return $request;
+        $user = MasterUsers::find($id);
+
+        if (!$user) {
+            return abort(404);
+        }
         DB::table('master_users')->where('id', $request->id)->update([
             'username' => $request->username,
             'email' => $request->email,
@@ -53,13 +77,18 @@ class UsersController extends Controller
             'password' => Hash::make($request['password']),
             'role' => $request->role,
             'status' => $request->status,
+            'updated_at' => Carbon::now(),
         ]);
-        return redirect('/master-users.users')->with('success', 'Berhasil edit User.');
+        return redirect('/master_users')->with('success', 'Berhasil edit User.');
     }
 
     public function delete($id)
     {
-        DB::table('master_users')->where('id', $id)->delete();
-        return redirect('/master-users.users')->with('success', 'Berhasil hapus User.');
+        try {
+            DB::table('master_users')->where('id', $id)->delete();
+            return redirect('/master_users')->with('success', 'Berhasil hapus User.');
+        } catch (QueryException $e) {
+            return redirect('/master_users')->with('error', 'Gagal hapus User: ' . $e->getMessage());
+        }
     }
 }
