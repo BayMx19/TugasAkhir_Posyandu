@@ -54,11 +54,11 @@
 
 
                                             <td>
-                                                <a href="/detail-users/{{ $u->id }}"><button
+                                                <a href="/detail-users/{{ encrypt($u->id) }}"><button
                                                         class="btn btn2 btn-success"><i class="ti ti-eye"></i></button></a>
-                                                <a href="/edit-users/{{ $u->id }}"><button
+                                                <a href="/edit-users/{{ encrypt($u->id) }}"><button
                                                         class="btn btn2 btn-primary"><i class="ti ti-edit"></i></button></a>
-                                                <a href="/master-users/delete/{{ $u->id }}"><button
+                                                <a href="/delete-users/{{ encrypt($u->id) }}"><button
                                                         class="btn btn2 btn-danger"><i class="ti ti-trash"></i></button></a>
                                             </td>
                                         </tr>

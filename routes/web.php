@@ -41,7 +41,7 @@ Route::get('/edit-users/{id}', [UsersController::class, 'edit']);
 Route::post('/edit-users/{id}/update', [UsersController::class, 'update']);
 Route::get('/detail-users/{id}', [UsersController::class, 'detail']);
 Route::post('/add-users/store', [UsersController::class, 'input']);
-Route::get('/master-users/delete/{id}', [UsersController::class, 'delete'])->name('delete-user');
+Route::get('/delete-users/{id}', [UsersController::class, 'delete'])->name('delete-user');
 
 
 

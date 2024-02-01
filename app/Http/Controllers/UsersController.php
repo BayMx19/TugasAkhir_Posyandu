@@ -42,7 +42,8 @@ class UsersController extends Controller
     }
     public function detail($id)
     {
-        $user = MasterUsers::find($id);
+        $decryptedId = decrypt($id);
+        $user = MasterUsers::find($decryptedId);
         // dd($user);
 
         if (!$user) {
@@ -53,7 +54,8 @@ class UsersController extends Controller
     }
     public function edit($id)
     {
-        $user = MasterUsers::find($id);
+        $decryptedId = decrypt($id);
+        $user = MasterUsers::find($decryptedId);
         if (!$user) {
             return abort(404);
         }
@@ -65,7 +67,8 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         // return $request;
-        $user = MasterUsers::find($id);
+        $decryptedId = decrypt($id);
+        $user = MasterUsers::find($decryptedId);
 
         if (!$user) {
             return abort(404);
@@ -85,7 +88,8 @@ class UsersController extends Controller
     public function delete($id)
     {
         try {
-            DB::table('master_users')->where('id', $id)->delete();
+            $decryptedId = decrypt($id);
+            DB::table('master_users')->where('id', $decryptedId)->delete();
             return redirect('/master_users')->with('success', 'Berhasil hapus User.');
         } catch (QueryException $e) {
             return redirect('/master_users')->with('error', 'Gagal hapus User: ' . $e->getMessage());
