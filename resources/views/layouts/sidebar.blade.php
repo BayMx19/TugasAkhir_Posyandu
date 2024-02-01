@@ -12,7 +12,7 @@
                     <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ '/home' }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ '/dashboard' }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
@@ -28,7 +28,7 @@
                         <span>
                             <i class="ti ti-users"></i>
                         </span>
-                        <span class="hide-menu">Pengguna</span>
+                        <span class="hide-menu">Users</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

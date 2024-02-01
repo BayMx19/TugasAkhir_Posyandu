@@ -30,8 +30,30 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+
 Route::get('/master_users', [UsersController::class, 'index']);
+Route::get('/add-users', function () {
+    return view('master-users.add-users');
+});
+Route::get('/detail-users', function () {
+    return view('master-users.detail-users');
+});
+
+
+
 Route::get('/master_kader', [KaderController::class, 'index']);
+Route::get('/add-kader', function () {
+    return view('master-kader.add-kader');
+});
+
 Route::get('/master_anak', [AnakController::class, 'index']);
+Route::get('/add-anak', function () {
+    return view('master-anak.add-anak');
+});
+
 Route::get('/perkembangan', [PencatatanController::class, 'index']);
+Route::get('/add-perkembangan', function () {
+    return view('pencatatan.add-perkembangan');
+});
