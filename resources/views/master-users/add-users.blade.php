@@ -10,7 +10,7 @@
                     </h5>
                     <div class="card">
                         <div class="card-body">
-                            <form method="POST" action="/add-users/store" enctype="multipart/form-data">
+                            <form id="myForm" method="POST" action="/add-users/store" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -100,7 +100,7 @@
 
 
 
-                                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                                <button type="submit" class="btn btn-primary mt-3" onclick="showSwal()">Simpan</button>
                             </form>
                         </div>
                     </div>
@@ -120,6 +120,23 @@
             } else {
                 passwordInput.type = "password";
             }
+        }
+
+        function showSwal() {
+            Swal.fire({
+                title: "Simpan Data?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Tidak"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Trigger form submission after "Ya" is clicked
+                    document.getElementById('myForm').submit();
+                }
+            });
         }
     </script>
 @endsection

@@ -22,5 +22,13 @@ class UsersSeeder extends Seeder
             'role' => "SuperAdmin",
             'status' => "active",
         ]);
+        DB::table('master_users')->insert([
+            'username' => "kader1",
+            'email' => "kader@gmail.com",
+            'nama' => "kader1",
+            'password' => Hash::make('Kader123'),
+            'role' => "Kader",
+            'status' => "active",
+        ]);
     }
 }
