@@ -222,6 +222,28 @@ html, body {
     color: red !important;
 }
 
+.card-dashboard{
+    border : 1px solid black;
+    border-radius: 1rem;
+    /* margin: 10px; */
+}
+.card {
+    border : 1px solid transparent;
+    border-radius: 1rem;
+
+}
+
+.card-dashboard1{
+    border : 1px solid black;
+    border-radius: 1rem;
+    margin: 10px;
+    padding: 10px;
+}
+
+.bg-blue{
+    background-color: #4E73DF !important;
+}
+
 
 
 

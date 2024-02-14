@@ -6,8 +6,10 @@ $(function () {
   // =====================================
   var chart = {
     series: [
-      { name: "Earnings this month:", data: [355, 390, 300, 350, 390, 180, 355, 390] },
-      { name: "Expense this month:", data: [280, 250, 325, 215, 250, 310, 280, 250] },
+      { name: "Stunting:", data: [5, 3, 3, 5, 3, 8, 5, 3, 4, 5, 1, 2] },
+      { name: "Wasting:", data: [2, 5, 3, 2, 2, 1, 2, 2, 1, 5, 1, 2] },
+      { name: "Underweight:", data: [2, 2, 5, 1, 2, 3, 2, 2, 1, 3, 5, 1] },
+
     ],
 
     chart: {
@@ -21,7 +23,7 @@ $(function () {
     },
 
 
-    colors: ["#5D87FF", "#49BEFF"],
+    colors: ["#FDCA5D", "#46B846", "#2F80ED"],
 
 
     plotOptions: {
@@ -57,7 +59,7 @@ $(function () {
 
     xaxis: {
       type: "category",
-      categories: ["16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08"],
+      categories: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"],
       labels: {
         style: { cssClass: "grey--text lighten-2--text fill-color" },
       },
@@ -67,7 +69,7 @@ $(function () {
     yaxis: {
       show: true,
       min: 0,
-      max: 400,
+      max: 10,
       tickAmount: 4,
       labels: {
         style: {
