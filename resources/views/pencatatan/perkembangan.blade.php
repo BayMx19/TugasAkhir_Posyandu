@@ -17,11 +17,11 @@
                             <table class="table datatable-primary text-center myDatausers" id="myDatausers">
                                 <thead class="text-uppercase bg-primary">
                                     <tr class="text-white">
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Username</th>
-                                        <th scope="col">Role</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Tanggal Pencatatan</th>
+                                        <th scope="col">Nama Anak</th>
+                                        <th scope="col">Analisa Stunting</th>
+                                        <th scope="col">Analisa Wasting</th>
+                                        <th scope="col">Analisa Underweight</th>
                                         <th scope="col" class="no-sort">Action</th>
                                     </tr>
                                 </thead>
