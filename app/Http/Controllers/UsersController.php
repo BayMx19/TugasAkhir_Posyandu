@@ -22,6 +22,12 @@ class UsersController extends Controller
         return view('master-users.add-users');
 
     }
+    // public function getCountUsers() {
+    //     $countUsers = DB::table('master_users')->get();
+    //     dd($countUsers);
+    //     return view('master-users.users', compact('users'));
+
+    // }
 
     public function input(Request $request)
     {

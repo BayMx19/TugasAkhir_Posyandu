@@ -17,6 +17,7 @@ class AnakController extends Controller
         return view('master-anak.anak', compact('anak'));
     }
 
+
     public function addAnak(){
         // dd($users);
         return view('master-anak.add-anak');

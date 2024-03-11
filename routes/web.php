@@ -8,6 +8,7 @@ use App\Http\Controllers\KaderController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AnakController;
 use App\Http\Controllers\PencatatanController;
+use App\Http\Controllers\ProfileController;
 
 
 
@@ -31,6 +32,10 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Auth::routes();
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'getcount'])->name('getcount');
+// Route::get('/dashboard', [HomeController::class, 'getcountAnak'])->name('getcountAnak');
+
+
 
 // START USERS
 Route::get('/master_users', [UsersController::class, 'index']);
@@ -71,3 +76,8 @@ Route::get('/perkembangan', [PencatatanController::class, 'index']);
 Route::get('/add-perkembangan', function () {
     return view('pencatatan.add-perkembangan');
 });
+
+
+//START PROFILE
+Route::get('/profile', [ProfileController::class, 'index']);
+//END PROFILE

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Master Users')
+@section('title', 'Master Pengguna')
 @section('content')
 
     <div class="container-fluid">
@@ -15,11 +15,11 @@
                             {{ session('error') }}
                         </div>
                     @endif
-                    <h5 class="card-title fw-bold mb-4"><b>Master Users</b>
+                    <h5 class="card-title fw-bold mb-4"><b>Master Pengguna</b>
                     </h5>
                     <a href="{{ '/add-users' }}"><button type="button" class="btn btn-plus btn-primary m-1"><i
                                 class="ti ti-plus"></i>
-                            Tambah User</button></a>
+                            Tambah Pengguna</button></a>
 
                     <div class="card card-table">
                         <div class="card-body  p-4">

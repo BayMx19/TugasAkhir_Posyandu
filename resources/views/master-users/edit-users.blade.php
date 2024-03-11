@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Edit Users')
+@section('title', 'Edit Pengguna')
 @section('content')
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title fw-bold mb-4"><a href="{{ '/master_users' }}"><button class="btn btn2 btn-primary"><i
-                                    class="ti ti-arrow-left"></i></button></a> <b class="mx-2">Edit User</b>
+                                    class="ti ti-arrow-left"></i></button></a> <b class="mx-2">Edit Pengguna</b>
                     </h5>
                     <div class="card">
                         <div class="card-body">

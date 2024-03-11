@@ -68,15 +68,27 @@
         $(document).ready(function() {
 
             $(".myDatausers").DataTable({
-                "searching": false,
+                "searching": true,
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
 
             });
             $(".myDatakader").DataTable({
-                "searching": false,
+                "searching": true,
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
 
             });
             $(".myDataanak").DataTable({
-                "searching": false,
+                "searching": true,
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
 
             });
         });

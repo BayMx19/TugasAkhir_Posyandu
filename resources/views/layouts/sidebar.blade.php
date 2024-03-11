@@ -16,7 +16,7 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Home</span>
+                    <span class="hide-menu">Beranda</span>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/dashboard' }}" aria-expanded="false">
@@ -28,20 +28,20 @@
                 </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Masters</span>
+                    <span class="hide-menu">Data Master</span>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/master_users' }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-users"></i>
                         </span>
-                        <span class="hide-menu">Users</span>
+                        <span class="hide-menu">Pengguna</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/master_kader' }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-user"></i>
+                            <i class="ti ti-nurse"></i>
                         </span>
                         <span class="hide-menu">Kader</span>
                     </a>
@@ -63,9 +63,23 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/perkembangan' }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-chart-dots"></i>
+                            <i class="ti ti-graph"></i>
+
                         </span>
                         <span class="hide-menu">Perkembangan Anak</span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Profile</span>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ '/profile' }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-user"></i>
+                        </span>
+                        <span class="hide-menu">Informasi Akun</span>
                     </a>
                 </li>
                 <li class="sidebar-item mt-5">

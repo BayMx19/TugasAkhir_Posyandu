@@ -77,6 +77,14 @@
             border: 2px solid transparent;
             padding: 7px 0px !important;
             margin-top: 1rem;
+            display: flex;
+            align-items: center !important;
+            text-align: center !important;
+            justify-content: center !important;
+        }
+
+        #spinner {
+            margin-left: 5px;
         }
 
         .btn-login:hover {
@@ -226,7 +234,14 @@
 
                                         <div class="d-grid gap-2">
 
-                                            <button type="submit" class="btn-login">Masuk</button>
+                                            <button id="loginBtn" type="submit" class="btn-login">Masuk <div
+                                                    id="spinner" style="display: none;">
+                                                    <!-- Spinner HTML -->
+                                                    <div class="spinner-border spinner-masuk"
+                                                        style="width: 1rem; height: 1rem;" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                </div></button>
 
                                         </div>
                                     </form>
@@ -257,6 +272,21 @@
                 passwordInput.type = "password";
             }
         }
+
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            // Menampilkan spinner
+            document.getElementById('spinner').style.display = 'block';
+
+            // Simulasi proses login (dapat dihapus)
+            setTimeout(function() {
+                // Menyembunyikan spinner
+                document.getElementById('spinner').style.display = 'none';
+
+                // Lakukan hal-hal lain setelah login berhasil
+                // Contoh: Redirect ke halaman lain
+                window.location.href = 'halaman-berikutnya.html';
+            }, 2000); // Anda dapat mengganti angka 2000 (ms) dengan durasi login aktual
+        });
     </script>
 
 </body>

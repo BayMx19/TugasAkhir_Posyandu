@@ -192,6 +192,7 @@ html, body {
 
 .form-control {
     position: relative;
+    /* color: transparent !important; */
 }
 
 .form-control::before {
@@ -242,6 +243,14 @@ html, body {
 
 .bg-blue{
     background-color: #4E73DF !important;
+}
+
+.spinner-masuk:hover{
+    color: white !important;
+}
+.spinner-masuk{
+    color: #4E73DF !important;
+    margin-left: 5px;
 }
 
 
