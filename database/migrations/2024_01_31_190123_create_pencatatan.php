@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('tgl_catat');
             $table->string('pencatat');
             $table->string('nama_anak');
-            $table->string('nik_anak')->nullable();
+            $table->string('ni      k_anak')->nullable();
             $table->string('umur');
             $table->string('kondisi', 191)->nullable();
             $table->string('jk')->nullable();
