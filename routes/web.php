@@ -73,9 +73,7 @@ Route::get('/delete-anak/{id}', [AnakController::class, 'delete'])->name('delete
 // END ANAK
 
 Route::get('/perkembangan', [PencatatanController::class, 'index']);
-Route::get('/add-perkembangan', function () {
-    return view('pencatatan.add-perkembangan');
-});
+Route::get('add-perkembangan', [PencatatanController::class, 'addPencatatan']);
 
 
 //START PROFILE

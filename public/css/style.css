@@ -4,190 +4,190 @@ a {
 
 ::-webkit-scrollbar {
     width: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #4E73DF;
+}
+::-webkit-scrollbar-thumb {
+    background: #4e73df;
     border-radius: 5px;
-  }
+}
 
-  .btn {
+.btn {
     width: 100% !important;
-  }
-  .card {
+}
+.card {
     border: transparent !important;
-
-  }
-  .card-table {
+}
+.card-table {
     margin-top: 80px !important;
     background-color: transparent;
-  }
-  .card-body{
+}
+.card-body {
     background-color: transparent !important;
-  }
-  .btn-plus {
+}
+.btn-plus {
     width: 20% !important;
     text-align: center;
     float: right;
     position: absolute;
     right: 0px !important;
-  }
-  .font-bold {
+}
+.font-bold {
     font-weight: 900 !important;
-  }
+}
 
-  .btn2{
+.btn2 {
     width: 40px !important;
-  }
+}
 
-  .header-sidebar{
+.header-sidebar {
     max-width: 100%; /* Jangan melebihi lebar container */
     height: auto;
-    margin-top:20px ;
-  }
-  .brand-logo{
+    margin-top: 20px;
+}
+.brand-logo {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-  }
-  h5 {
+}
+h5 {
     margin-bottom: 0px !important;
-  }
+}
 tr {
     text-align: left !important;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @-webkit-keyframes come-in {
-  0% {
-    -webkit-transform: translatey(100px);
-            transform: translatey(100px);
-    opacity: 0;
-  }
-  30% {
-    -webkit-transform: translateX(-50px) scale(0.4);
-            transform: translateX(-50px) scale(0.4);
-  }
-  70% {
-    -webkit-transform: translateX(0px) scale(1.2);
-            transform: translateX(0px) scale(1.2);
-  }
-  100% {
-    -webkit-transform: translatey(0px) scale(1);
-            transform: translatey(0px) scale(1);
-    opacity: 1;
-  }
+    0% {
+        -webkit-transform: translatey(100px);
+        transform: translatey(100px);
+        opacity: 0;
+    }
+    30% {
+        -webkit-transform: translateX(-50px) scale(0.4);
+        transform: translateX(-50px) scale(0.4);
+    }
+    70% {
+        -webkit-transform: translateX(0px) scale(1.2);
+        transform: translateX(0px) scale(1.2);
+    }
+    100% {
+        -webkit-transform: translatey(0px) scale(1);
+        transform: translatey(0px) scale(1);
+        opacity: 1;
+    }
 }
 @keyframes come-in {
-  0% {
-    -webkit-transform: translatey(100px);
-            transform: translatey(100px);
-    opacity: 0;
-  }
-  30% {
-    -webkit-transform: translateX(-50px) scale(0.4);
-            transform: translateX(-50px) scale(0.4);
-  }
-  70% {
-    -webkit-transform: translateX(0px) scale(1.2);
-            transform: translateX(0px) scale(1.2);
-  }
-  100% {
-    -webkit-transform: translatey(0px) scale(1);
-            transform: translatey(0px) scale(1);
-    opacity: 1;
-  }
+    0% {
+        -webkit-transform: translatey(100px);
+        transform: translatey(100px);
+        opacity: 0;
+    }
+    30% {
+        -webkit-transform: translateX(-50px) scale(0.4);
+        transform: translateX(-50px) scale(0.4);
+    }
+    70% {
+        -webkit-transform: translateX(0px) scale(1.2);
+        transform: translateX(0px) scale(1.2);
+    }
+    100% {
+        -webkit-transform: translatey(0px) scale(1);
+        transform: translatey(0px) scale(1);
+        opacity: 1;
+    }
 }
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-html, body {
-  background: #eaedf2;
-  font-family: 'Roboto', sans-serif;
+html,
+body {
+    background: #eaedf2;
+    font-family: "Roboto", sans-serif;
 }
 
 .floating-container {
-  position: fixed;
-  width: 100px;
-  height: 100px;
-  bottom: 0;
-  right: 0;
-  margin: 35px 25px;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    bottom: 0;
+    right: 0;
+    margin: 35px 25px;
 }
 .floating-container:hover {
-  height: 300px;
+    height: 300px;
 }
 .floating-container:hover .floating-button {
-  box-shadow: 0 10px 25px #46B846;
-  -webkit-transform: translatey(5px);
-          transform: translatey(5px);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+    box-shadow: 0 10px 25px #46b846;
+    -webkit-transform: translatey(5px);
+    transform: translatey(5px);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
 }
 .floating-container:hover .element-container .float-element:nth-child(1) {
-  -webkit-animation: come-in 0.4s forwards 0.2s;
-          animation: come-in 0.4s forwards 0.2s;
+    -webkit-animation: come-in 0.4s forwards 0.2s;
+    animation: come-in 0.4s forwards 0.2s;
 }
 .floating-container:hover .element-container .float-element:nth-child(2) {
-  -webkit-animation: come-in 0.4s forwards 0.4s;
-          animation: come-in 0.4s forwards 0.4s;
+    -webkit-animation: come-in 0.4s forwards 0.4s;
+    animation: come-in 0.4s forwards 0.4s;
 }
 .floating-container:hover .element-container .float-element:nth-child(3) {
-  -webkit-animation: come-in 0.4s forwards 0.6s;
-          animation: come-in 0.4s forwards 0.6s;
+    -webkit-animation: come-in 0.4s forwards 0.6s;
+    animation: come-in 0.4s forwards 0.6s;
 }
 .floating-container .floating-button {
-  position: absolute;
-  width: 65px;
-  height: 65px;
-  background: #46B846;
-  bottom: 0;
-  border-radius: 50%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  color: white;
-  line-height: 65px;
-  text-align: center;
-  font-size: 23px;
-  z-index: 100;
-  /* box-shadow: 0 10px 25px -5px #46B846; */
-  cursor: pointer;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background: #46b846;
+    bottom: 0;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: white;
+    line-height: 65px;
+    text-align: center;
+    font-size: 23px;
+    z-index: 100;
+    /* box-shadow: 0 10px 25px -5px #46B846; */
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
 }
 .floating-container .float-element {
-  position: relative;
-  display: block;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin: 15px auto;
-  color: white;
-  font-weight: 500;
-  text-align: center;
-  line-height: 50px;
-  z-index: 0;
-  opacity: 0;
-  -webkit-transform: translateY(100px);
-          transform: translateY(100px);
+    position: relative;
+    display: block;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 15px auto;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    line-height: 50px;
+    z-index: 0;
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
 }
 .floating-container .float-element .material-icons {
-  vertical-align: middle;
-  font-size: 16px;
+    vertical-align: middle;
+    font-size: 16px;
 }
 .floating-container .float-element:nth-child(1) {
-  background: #42A5F5;
-  box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
+    background: #42a5f5;
+    box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
 }
 .floating-container .float-element:nth-child(2) {
-  background: #4CAF50;
-  box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
+    background: #4caf50;
+    box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
 }
 .floating-container .float-element:nth-child(3) {
-  background: #FF9800;
-  box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
+    background: #ff9800;
+    box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
 }
 
 .form-control {
@@ -196,7 +196,7 @@ html, body {
 }
 
 .form-control::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 12px;
     height: 12px;
@@ -223,37 +223,35 @@ html, body {
     color: red !important;
 }
 
-.card-dashboard{
-    border : 1px solid black;
+.card-dashboard {
+    border: 1px solid black;
     border-radius: 1rem;
     /* margin: 10px; */
 }
 .card {
-    border : 1px solid transparent;
+    border: 1px solid transparent;
     border-radius: 1rem;
-
 }
 
-.card-dashboard1{
-    border : 1px solid black;
+.card-dashboard1 {
+    border: 1px solid black;
     border-radius: 1rem;
     margin: 10px;
     padding: 10px;
 }
 
-.bg-blue{
-    background-color: #4E73DF !important;
+.bg-blue {
+    background-color: #4e73df !important;
 }
 
-.spinner-masuk:hover{
+.spinner-masuk:hover {
     color: white !important;
 }
-.spinner-masuk{
-    color: #4E73DF !important;
+.spinner-masuk {
+    color: #4e73df !important;
     margin-left: 5px;
 }
 
-
-
-
-
+.hasil-prediksi {
+    text-align: center !important;
+}

@@ -58,6 +58,10 @@ class AnakController extends Controller
                     'umur_ayah' => $request->umur_ayah,
                     'ayah_bekerja' => $request->ayah_bekerja,
                     'pendidikan_ayah' => $request->pendidikan_ayah,
+                    'bb' => $request->bb,
+                    'pb' => $request->pb,
+                    'lk'=> $request->lk,
+                    'imd' => $request->imd, 
                     'created_at' => Carbon::now(),
                 ]);
 
@@ -140,6 +144,10 @@ class AnakController extends Controller
             'umur_ayah' => $request->umur_ayah,
             'ayah_bekerja' => $request->ayah_bekerja,
             'pendidikan_ayah' => $request->pendidikan_ayah,
+            'bb' => $request->bb,
+            'pb' => $request->pb,
+            'lk'=> $request->lk,
+            'imd' => $request->imd, 
             'updated_at' => Carbon::now(),
         ]);
         return redirect('/master_anak')->with('success', 'Berhasil edit Anak.');

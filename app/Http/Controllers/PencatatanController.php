@@ -12,4 +12,11 @@ class PencatatanController extends Controller
 
         return view('pencatatan.perkembangan', compact('pencatatan'));
     }
+    
+    public function addPencatatan(){
+        // dd($users);
+        return view('pencatatan.add-perkembangan');
+
+    }
+
 }
