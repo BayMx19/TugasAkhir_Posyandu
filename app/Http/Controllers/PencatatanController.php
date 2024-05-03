@@ -29,7 +29,8 @@ class PencatatanController extends Controller
             // return $request;
             try {
                 DB::table('pencatatan')->insert([
-                    
+                    'tgl_catat'=> $request->tgl_catat,
+                    'pencatat'=>$request->nama_anak,
                     'created_at' => Carbon::now(),
                 ]);
 
