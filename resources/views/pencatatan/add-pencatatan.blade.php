@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title fw-bold mb-4"><a href="{{ '/perkembangan' }}"><button
+                <h5 class="card-title fw-bold mb-4"><a href="{{ '/pencatatan' }}"><button
                             class="btn btn2 btn-primary"><i class="ti ti-arrow-left"></i></button></a> <b
                         class="mx-2">Tambah Pencatatan</b>
                 </h5>
@@ -14,6 +14,7 @@
                         <form id="myForm" method="POST" action="/add-users/store" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row">
+                                <h5 class="mb-4 text-center"><b>Data Anak</b></h5>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label for="tgl_catat" class="form-label">Tanggal Pencatatan <label
@@ -54,12 +55,14 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="umur" class="form-label">Umur Anak<label
+                                        <label for="Child's_Age" class="form-label">Umur Anak<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="umur" name="umur" required>
+                                        <input type="text" class="form-control" id="Child's_Age" name="Child's_Age"
+                                            required>
 
                                     </div>
                                 </div>
+
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label for="kondisi" class="form-label">Kondisi <label
@@ -73,6 +76,115 @@
 
                                     </div>
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="Sex" class="form-label">Jenis Kelamin<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="Sex" name="Sex" required>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="alamat" class="form-label">Alamat Rumah<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" required>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="provinsi" class="form-label">Provinsi<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="provinsi" name="provinsi" required>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="Region" class="form-label">Kota / Kabupaten<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="Region " name="Region" required>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="kecamatan" class="form-label">Kecamatan<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="kecamatan" name="kecamatan"
+                                            required>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="kelurahan" class="form-label">Kelurahan / Desa<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="kelurahan" name="kelurahan"
+                                            required>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="Type_of_Place" class="form-label">Tipe Tempat Tinggal <label
+                                                class="text-red">*</label></label>
+                                        <select class="form-control" id="Type_of_Place" name="Type_of_Place" required>
+                                            <option value="" selected disabled>Pilih Tipe Tempat Tinggal</option>
+
+                                            <option value="Urban">Perkotaan</option>
+                                            <option value="Rural">Pedesaan</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="posyandu" class="form-label">Posyandu<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="posyandu"
+                                            value="Posyandu Kumis Kucing" name="posyandu" required disabled>
+                                        <input type="hidden" class="form-control" id="posyandu"
+                                            value="Posyandu Kumis Kucing" name="posyandu" required>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="Birth_Order" class="form-label">Kelahiran Ke? <label
+                                                class="text-red">*</label></label>
+                                        <select class="form-control" id="Birth_Order" name="Birth_Order" required>
+                                            <option value="" selected disabled>Pilih Kelahiran</option>
+
+                                            <option value="1">Pertama</option>
+                                            <option value="2">Kedua</option>
+                                            <option value="3">Ketiga</option>
+                                            <option value="4">Keempat</option>
+                                            <option value="5">Kelima</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="Twin_Child" class="form-label">Anak Kembar? <label
+                                                class="text-red">*</label></label>
+                                        <select class="form-control" id="Twin_Child" name="Twin_Child" required>
+                                            <option value="" selected disabled>Pilih</option>
+
+                                            <option value="single birth">Kelahiran Tunggal</option>
+                                            <option value="1st of multiple">Nomor 1 dari kelipatan</option>
+                                            <option value="2nd of multiple">Nomor 2 dari kelipatan</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <h5 class="mb-4 mt-4 text-center"><b>Pencatatan Perkembangan Anak</b></h5>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label for="bb" class="form-label">Berat Badan<label
@@ -109,123 +221,61 @@
 
                                     </div>
                                 </div>
-
+                                <h5 class="mb-4 mt-4 text-center"><b>Data Orang Tua</b></h5>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="jk" class="form-label">Jenis Kelamin <label
+                                        <label for="nama_ibu" class="form-label">Nama Ibu<label
                                                 class="text-red">*</label></label>
-                                        <select class="form-control" id="jk" name="jk" required>
-                                            <option value="" selected disabled>Pilih Jenis Kelamin</option>
-
-                                            <option value="Laki-Laki">Laki-Laki</option>
-                                            <option value="Perempuan">Perempuan</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" required>
 
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="alamat" class="form-label">Alamat Rumah<label
+                                        <label for="Mother's_Age" class="form-label">Umur Ibu<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat" required>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="provinsi" class="form-label">Provinsi<label
-                                                class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="provinsi" name="provinsi" required>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="kota" class="form-label">Kota / Kabupaten<label
-                                                class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="kota" name="kota" required>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="kecamatan" class="form-label">Kecamatan<label
-                                                class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="kecamatan" name="kecamatan"
+                                        <input type="text" class="form-control" id="Mother's_Age" name="Mother's_Age"
                                             required>
 
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="kelurahan" class="form-label">Kelurahan / Desa<label
+                                        <label for="Mother's_Working_Status" class="form-label">Apakah Ibu
+                                            Bekerja?<label class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="Mother's_Working_Status"
+                                            name="Mother's_Working_Status" required>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="nama_ayah" class="form-label">Nama Ayah<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="kelurahan" name="kelurahan"
+                                        <input type="text" class="form-control" id="nama_ayah" name="nama_ayah"
                                             required>
 
                                     </div>
                                 </div>
-
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="tipe_tt" class="form-label">Tipe Tempat Tinggal <label
+                                        <label for="Father's_Education" class="form-label">Pendidikan Ayah<label
                                                 class="text-red">*</label></label>
-                                        <select class="form-control" id="tipe_tt" name="tipe_tt" required>
-                                            <option value="" selected disabled>Pilih Tipe Tempat Tinggal</option>
-
-                                            <option value="Perkotaan">Perkotaan</option>
-                                            <option value="PedesaanMeninggal">Pedesaan</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="Father's_Education"
+                                            name="Father's_Education" required>
 
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="posyandu" class="form-label">Posyandu<label
-                                                class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="posyandu"
-                                            value="Posyandu Kumis Kucing" name="posyandu" required disabled>
-                                        <input type="hidden" class="form-control" id="posyandu"
-                                            value="Posyandu Kumis Kucing" name="posyandu" required>
 
-                                    </div>
-                                </div>
+                                <h5 class="mb-4 mt-4 text-center"><b>Data PHBS</b></h5>
+
 
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="kelahiran_ke" class="form-label">Kelahiran Ke? <label
+                                        <label for="Drinking_Water" class="form-label">Sumber Air Minum<label
                                                 class="text-red">*</label></label>
-                                        <select class="form-control" id="kelahiran_ke" name="kelahiran_ke" required>
-                                            <option value="" selected disabled>Pilih Kelahiran</option>
-
-                                            <option value="Pertama">Pertama</option>
-                                            <option value="Kedua">Kedua</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="kembar" class="form-label">Anak Kembar? <label
-                                                class="text-red">*</label></label>
-                                        <select class="form-control" id="kembar" name="kembar" required>
-                                            <option value="" selected disabled>Pilih</option>
-
-                                            <option value="Kelahiran Tunggal">Kelahiran Tunggal</option>
-                                            <option value="Nomor 1 dari kelipatan">Nomor 1 dari kelipatan</option>
-                                            <option value="Nomor 2 dari kelipatan">Nomor 2 dari kelipatan</option>
-
-                                        </select>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="air_minum" class="form-label">Sumber Air Minum<label
-                                                class="text-red">*</label></label>
-                                        <select class="form-control" id="air_minum" name="air_minum" required>
+                                        <select class="form-control" id="Drinking_Water" name="Drinking_Water" required>
                                             <option value="" selected disabled>Pilih Sumber Air Minum</option>
 
                                             <option value="Sumber Aman">Sumber Aman</option>
@@ -238,9 +288,9 @@
 
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="toilet" class="form-label">Tipe Toilet<label
+                                        <label for="Toilet_Types" class="form-label">Tipe Toilet<label
                                                 class="text-red">*</label></label>
-                                        <select class="form-control" id="toilet" name="toilet" required>
+                                        <select class="form-control" id="Toilet_Types" name="Toilet_Types" required>
                                             <option value="" selected disabled>Pilih Tipe Toilet</option>
 
                                             <option value="Higienis">Higienis</option>
@@ -252,10 +302,9 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="index_kesejahteraan" class="form-label">Indeks Kesejahteraan<label
+                                        <label for="Wealth_Index" class="form-label">Indeks Kesejahteraan<label
                                                 class="text-red">*</label></label>
-                                        <select class="form-control" id="index_kesejahteraan" name="index_kesejahteraan"
-                                            required>
+                                        <select class="form-control" id="Wealth_Index" name="Wealth_Index" required>
                                             <option value="" selected disabled>Pilih Indeks Kesejahteraan</option>
 
                                             <option value="Miskin">Miskin</option>

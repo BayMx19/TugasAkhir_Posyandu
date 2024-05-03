@@ -61,7 +61,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ '/perkembangan' }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ '/pencatatan' }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-graph"></i>
 
