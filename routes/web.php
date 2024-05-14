@@ -68,12 +68,17 @@ Route::post('/add-anak/store', [AnakController::class, 'input']);
 Route::get('/detail-anak/{id}', [AnakController::class, 'detail']);
 Route::get('/edit-anak/{id}', [AnakController::class, 'edit']);
 Route::post('/edit-anak/{id}/update', [AnakController::class, 'update']);
-Route::get('/delete-anak/{id}', [AnakController::class, 'delete'])->name('delete-kader');
+Route::get('/delete-anak/{id}', [AnakController::class, 'delete'])->name('delete-anak');
 
 // END ANAK
 
 Route::get('/pencatatan', [PencatatanController::class, 'index']);
-Route::get('add-pencatatan', [PencatatanController::class, 'addPencatatan']);
+Route::get('/add-pencatatan', [PencatatanController::class, 'addPencatatan']);
+Route::post('/add-pencatatan/store', [PencatatanController::class, 'input']);
+Route::get('/detail-pencatatan/{id}', [PencatatanController::class, 'detail']);
+Route::get('/edit-pencatatan/{id}', [PencatatanController::class, 'edit']);
+Route::post('/edit-pencatatan/{id}/update', [PencatatanController::class, 'update']);
+Route::get('/delete-pencatatan/{id}', [PencatatanController::class, 'delete'])->name('delete-pencatatan');
 
 
 //START PROFILE

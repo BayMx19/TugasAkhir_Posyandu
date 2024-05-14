@@ -14,7 +14,7 @@
 
                 <div class="card card-table">
                     <div class="card-body  p-4">
-                        <table class="table datatable-primary text-center myDatausers" id="myDatausers">
+                        <table class="table datatable-primary text-center myDatausers" id="myDatapencatatan">
                             <thead class="text-uppercase bg-primary">
                                 <tr class="text-white">
                                     <th scope="col">Tanggal Pencatatan</th>
@@ -28,21 +28,22 @@
                             <tbody>
                                 @foreach ($pencatatan as $p)
                                 <tr>
-                                    <td>{{ $p->nama }}</td>
-                                    <td>{{ $p->email }}</td>
-                                    <td>{{ $p->username }}</td>
-                                    <td>{{ $p->role }}</td>
-                                    <td>{{ $p->status }}</td>
+                                    <td>{{ $p->tgl_catat}}</td>
+                                    <td>{{ $p->nama_anak }}</td>
+                                    <td>{{ $p->p_stunting }}</td>
+                                    <td>{{ $p->p_wasting }}</td>
+                                    <td>{{ $p->p_underweight }}</td>
+
 
 
 
                                     <td>
-                                        <a href="/detail-users"><button class="btn btn2 btn-success"><i
-                                                    class="ti ti-eye"></i></button></a>
-                                        <a href="/detail-users"><button class="btn btn2 btn-primary"><i
-                                                    class="ti ti-edit"></i></button></a>
-                                        <a href="/master-users/delete/"><button class="btn btn2 btn-danger"><i
-                                                    class="ti ti-trash"></i></button></a>
+                                        <a href="/detail-pencatatan/{{ encrypt($p->id) }}"><button
+                                                class="btn btn2 btn-success"><i class="ti ti-eye"></i></button></a>
+                                        <a href="/edit-pencatatan/{{ encrypt($p->id) }}"><button
+                                                class="btn btn2 btn-primary"><i class="ti ti-edit"></i></button></a>
+                                        <a href="/pencatatan/delete/{{ encrypt($p->id) }}"><button
+                                                class="btn btn2 btn-danger"><i class="ti ti-trash"></i></button></a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -54,44 +54,52 @@
     <script src="/assets/js/dashboard.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script>
-        function confirmLogout() {
-            var isConfirmed = confirm("Anda yakin untuk logout?");
+    function confirmLogout() {
+        var isConfirmed = confirm("Anda yakin untuk logout?");
 
-            if (isConfirmed) {
-                window.location.href = "{{ '/logout' }}";
-            } else {
-                alert("Logout dibatalkan.");
-            }
+        if (isConfirmed) {
+            window.location.href = "{{ '/logout' }}";
+        } else {
+            alert("Logout dibatalkan.");
         }
+    }
     </script>
     <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
 
-            $(".myDatausers").DataTable({
-                "searching": true,
-                "columnDefs": [{
-                    "targets": 'no-sort',
-                    "orderable": false,
-                }]
+        $(".myDatausers").DataTable({
+            "searching": true,
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }]
 
-            });
-            $(".myDatakader").DataTable({
-                "searching": true,
-                "columnDefs": [{
-                    "targets": 'no-sort',
-                    "orderable": false,
-                }]
-
-            });
-            $(".myDataanak").DataTable({
-                "searching": true,
-                "columnDefs": [{
-                    "targets": 'no-sort',
-                    "orderable": false,
-                }]
-
-            });
         });
+        $(".myDatakader").DataTable({
+            "searching": true,
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }]
+
+        });
+        $(".myDataanak").DataTable({
+            "searching": true,
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }]
+
+        });
+        $(".myDatapencatatan").DataTable({
+            "searching": true,
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }]
+
+        });
+    });
     </script>
 </body>
 

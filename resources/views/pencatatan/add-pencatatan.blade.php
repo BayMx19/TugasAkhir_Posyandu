@@ -11,7 +11,7 @@
                 </h5>
                 <div class="card">
                     <div class="card-body">
-                        <form id="myForm" method="POST" action="/add-users/store" enctype="multipart/form-data">
+                        <form id="myForm" method="POST" action="/add-pencatatan/store" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row">
                                 <h5 class="mb-4 text-center"><b>Data Anak</b></h5>
@@ -22,7 +22,7 @@
                                         <input type="date" class="form-control" id="tgl_catat" name="tgl_catat"
                                             value="{{ now()->toDateString() }}" required disabled>
                                         <input type="date" class="form-control" value="{{ now()->toDateString() }}"
-                                            id="tgl_catat" name="tgl_catat" required disabled hidden>
+                                            id="tgl_catat" name="tgl_catat" required hidden>
 
                                     </div>
                                 </div>
@@ -40,8 +40,15 @@
                                     <div class="mb-3">
                                         <label for="nama_anak" class="form-label">Nama Anak<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="nama_anak" name="nama_anak"
-                                            required>
+                                        <select class="form-control" id="nama_anak" name="nama_anak" required>
+                                            <option value="" selected disabled>Pilih Nama Anak</option>
+                                            <input type="text" placeholder="Cari Nama Anak" id="myInput"
+                                                onkeyup="filterFunction()">
+                                            @foreach ($anak as $a)
+                                            <option name="nama_anak" data-nama="{{ $a->nama_anak }}">
+                                                {{ $a->nama_anak }}</option>
+                                            @endforeach
+                                        </select>
 
                                     </div>
                                 </div>
@@ -55,9 +62,9 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="Child's_Age" class="form-label">Umur Anak<label
+                                        <label for="childs_age" class=" form-label">Umur Anak<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="Child's_Age" name="Child's_Age"
+                                        <input type="text" class="form-control" id="childs_age" name="childs_age"
                                             required>
 
                                     </div>
@@ -127,11 +134,34 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class=" mb-3">
+                                                <label for="rt" class="form-label">RT<label
+                                                        class="text-red">*</label></label>
+                                                <input type="text" class="form-control" id="rt" name="rt" required>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <label for="rw" class="form-label">RW<label
+                                                        class="text-red">*</label></label>
+                                                <input type="text" class="form-control" id="rw" name="rw" required>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label for="Type_of_Place" class="form-label">Tipe Tempat Tinggal <label
                                                 class="text-red">*</label></label>
                                         <select class="form-control" id="Type_of_Place" name="Type_of_Place" required>
-                                            <option value="" selected disabled>Pilih Tipe Tempat Tinggal</option>
+                                            <option value="" selected disabled>Pilih Tipe Tempat Tinggal
+                                            </option>
 
                                             <option value="Urban">Perkotaan</option>
                                             <option value="Rural">Pedesaan</option>
@@ -184,6 +214,14 @@
 
                                     </div>
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="no_bpjs" class="form-label">No. BPJS<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="no_bpjs" name="no_bpjs" required>
+
+                                    </div>
+                                </div>
                                 <h5 class="mb-4 mt-4 text-center"><b>Pencatatan Perkembangan Anak</b></h5>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
@@ -232,19 +270,28 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="Mother's_Age" class="form-label">Umur Ibu<label
+                                        <label for="mothers_age" class="form-label">Umur Ibu<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="Mother's_Age" name="Mother's_Age"
+                                        <input type="text" class="form-control" id="mothers_age" name="mothers_age"
                                             required>
 
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="Mother's_Working_Status" class="form-label">Apakah Ibu
+                                        <label for="mothers_education" class="form-label">Pendidikan Ibu<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="mothers_education"
+                                            name="mothers_education" required>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="mothers_working_status" class="form-label">Apakah Ibu
                                             Bekerja?<label class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="Mother's_Working_Status"
-                                            name="Mother's_Working_Status" required>
+                                        <input type="text" class="form-control" id="mothers_working_status"
+                                            name="mothers_working_status" required>
 
                                     </div>
                                 </div>
@@ -259,10 +306,10 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
-                                        <label for="Father's_Education" class="form-label">Pendidikan Ayah<label
+                                        <label for="fathers_education" class="form-label">Pendidikan Ayah<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="Father's_Education"
-                                            name="Father's_Education" required>
+                                        <input type="text" class="form-control" id="fathers_education"
+                                            name="fathers_education" required>
 
                                     </div>
                                 </div>
@@ -305,7 +352,8 @@
                                         <label for="Wealth_Index" class="form-label">Indeks Kesejahteraan<label
                                                 class="text-red">*</label></label>
                                         <select class="form-control" id="Wealth_Index" name="Wealth_Index" required>
-                                            <option value="" selected disabled>Pilih Indeks Kesejahteraan</option>
+                                            <option value="" selected disabled>Pilih Indeks Kesejahteraan
+                                            </option>
 
                                             <option value="Miskin">Miskin</option>
                                             <option value="Menengah">Menengah</option>
@@ -347,8 +395,8 @@
                                     </div>
                                     <div class="col-sm-12 mt-3">
                                         <div class="mb-3">
-                                            <label for="p_underweight" class="form-label">Prediksi Underweight<label
-                                                    class="text-red">*</label></label>
+                                            <label for="p_underweight" class="form-label">Prediksi
+                                                Underweight<label class="text-red">*</label></label>
                                             <input type="text" class="form-control hasil-prediksi" id="p_underweight"
                                                 value="" name="p_underweight" required disabled>
                                             <input type="hidden" class="form-control hasil-prediksi" id="p_underweight"
@@ -414,6 +462,25 @@ function sendColab() {
             document.getElementById("hiddenRow").style.display = "block";
         }
     });
+}
+
+function myFunction() {
+    document.getElementById("nama_anak").classList.toggle("show");
+}
+
+function filterFunction() {
+    const input = document.getElementById("myInput");
+    const filter = input.value.toUpperCase();
+    const select = document.getElementById("nama_anak");
+    const a = select.getElementsByTagName("a");
+    for (let i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
 }
 </script>
 @endsection

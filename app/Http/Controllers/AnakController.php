@@ -12,7 +12,7 @@ class AnakController extends Controller
 {
     public function index()
     {
-        $anak = DB::table('master_anak')->get();
+        $anak = DB::table('master_anak')->select('id', 'nama_anak')->get();
 
         return view('master-anak.anak', compact('anak'));
     }
