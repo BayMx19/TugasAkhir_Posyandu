@@ -9,6 +9,9 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AnakController;
 use App\Http\Controllers\PencatatanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PredictionController;
+// use Symfony\Component\HttpFoundation\Request;
+// use Phpml\NeuralNetwork\Node\Input;
 
 
 
@@ -26,6 +29,7 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 
@@ -84,3 +88,7 @@ Route::get('/delete-pencatatan/{id}', [PencatatanController::class, 'delete'])->
 //START PROFILE
 Route::get('/profile', [ProfileController::class, 'index']);
 //END PROFILE
+
+// Route::post('/predict', [PredictionController::class, 'predict']);
+
+Route::post('/predict', [PredictionController::class, 'predict']);

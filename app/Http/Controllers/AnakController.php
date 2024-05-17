@@ -12,7 +12,7 @@ class AnakController extends Controller
 {
     public function index()
     {
-        $anak = DB::table('master_anak')->select('id', 'nama_anak')->get();
+        $anak = DB::table('master_anak')->select('id', 'nama_anak', 'nama_ibu', 'jk', 'umur', 'kondisi')->get();
 
         return view('master-anak.anak', compact('anak'));
     }
@@ -58,10 +58,10 @@ class AnakController extends Controller
                     'umur_ayah' => $request->umur_ayah,
                     'ayah_bekerja' => $request->ayah_bekerja,
                     'pendidikan_ayah' => $request->pendidikan_ayah,
-                    'bb' => $request->bb,
-                    'pb' => $request->pb,
-                    'lk'=> $request->lk,
-                    'imd' => $request->imd, 
+                    'rt' => $request->rt,
+                    'rw' => $request->rw,
+                    'no_bpjs'=> $request->no_bpjs,
+                    
                     'created_at' => Carbon::now(),
                 ]);
 
@@ -144,10 +144,9 @@ class AnakController extends Controller
             'umur_ayah' => $request->umur_ayah,
             'ayah_bekerja' => $request->ayah_bekerja,
             'pendidikan_ayah' => $request->pendidikan_ayah,
-            'bb' => $request->bb,
-            'pb' => $request->pb,
-            'lk'=> $request->lk,
-            'imd' => $request->imd, 
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'no_bpjs'=> $request->no_bpjs,
             'updated_at' => Carbon::now(),
         ]);
         return redirect('/master_anak')->with('success', 'Berhasil edit Anak.');

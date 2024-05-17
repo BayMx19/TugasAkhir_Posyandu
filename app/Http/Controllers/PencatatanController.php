@@ -22,8 +22,9 @@ class PencatatanController extends Controller
     }
     
     public function addPencatatan(){
-        // dd($users);
-        $anak = DB::table('master_anak')->get();
+        $anak = DB::table('master_anak')->select('id', 'nama_anak', 'nik_anak', 'tgl_lahir' , 'tempat_lahir', 'jk', 'provinsi', 'kota', 'kecamatan', 'kelurahan', 'posyandu', 'kelahiran_ke', 'kembar', 'nama_ibu', 'umur_ibu', 'pendidikan_ibu', 'ibu_bekerja', 'nama_ayah', 'pendidikan_ayah', 'tipe_tt', 'rt', 'rw', 'no_bpjs')->get();
+    // dd($anak);
+        
         return view('pencatatan.add-pencatatan', ['anak'=>$anak]);
 
     }

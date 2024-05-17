@@ -43,10 +43,10 @@ return new class extends Migration
             $table->string('umur_ayah', 191)->nullable();
             $table->string('ayah_bekerja');
             $table->string('pendidikan_ayah');
-            $table->string('bb')->nullable();
-            $table->string('pb')->nullable();
-            $table->string('lk')->nullable();
-            $table->boolean('imd')->nullable();
+            
+            $table->string('rt', 3)->nullable();
+            $table->string('rw', 3)->nullable();
+            $table->string('no_bpjs')->nullable();
             $table->timestamps();
         });
     }
