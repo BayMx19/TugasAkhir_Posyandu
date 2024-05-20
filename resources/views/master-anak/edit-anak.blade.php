@@ -167,7 +167,8 @@
                                             <div class=" mb-3">
                                                 <label for="rt" class="form-label">RT<label
                                                         class="text-red">*</label></label>
-                                                <input type="text" class="form-control" id="rt" name="rt" required>
+                                                <input type="text" class="form-control" id="rt" value="{{$anak->rt}}"
+                                                    name="rt" required>
 
                                             </div>
                                         </div>
@@ -175,7 +176,8 @@
                                             <div class="mb-3">
                                                 <label for="rw" class="form-label">RW<label
                                                         class="text-red">*</label></label>
-                                                <input type="text" class="form-control" id="rw" name="rw" required>
+                                                <input type="text" class="form-control" id="rw" value="{{$anak->rw}}"
+                                                    name="rw" required>
 
                                             </div>
                                         </div>

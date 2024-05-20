@@ -196,9 +196,18 @@
                                                 class="text-red">*</label></label>
                                         <select class="form-control" id="kelahiran_ke" name="kelahiran_ke" required>
                                             <option value="" selected disabled>Pilih Kelahiran</option>
-                                            <option value="Pertama">Pertama</option>
-                                            <option value="Kedua">Kedua</option>
-                                            <option value="Lainnya">Lainnya (>2)</option>
+                                            <option value="1">Pertama</option>
+                                            <option value="2">Kedua</option>
+                                            <option value="3">Ketiga</option>
+                                            <option value="4">Keempat</option>
+                                            <option value="5">Kelima</option>
+                                            <option value="6">Keenam</option>
+                                            <option value="7">Ketujuh</option>
+                                            <option value="8">Kedelapan</option>
+                                            <option value="9">Kesembilan</option>
+                                            <option value="10">Kesepuluh</option>
+                                            <option value="11">Kesebelas</option>
+                                            <option value="12">Keduabelas</option>
                                         </select>
 
                                     </div>
@@ -208,10 +217,11 @@
                                         <label for="kembar" class="form-label">Anak Kembar? <label
                                                 class="text-red">*</label></label>
                                         <select class="form-control" id="kembar" name="kembar" required>
-                                            <option value="" selected disabled>Apakah Anak Kembar?</option>
-                                            <option value="Tidak">Tidak</option>
-                                            <option value="Kembar Pertama">Kembar Pertama</option>
-                                            <option value="Kembar Kedua">Kembar Kedua</option>
+                                            <option value="" selected disabled>Pilih</option>
+                                            <option value="Tunggal">Kelahiran Tunggal</option>
+                                            <option value="Nomor 1 dari kelipatan">Nomor 1 dari kelipatan</option>
+                                            <option value="Nomor 2 dari kelipatan">Nomor 2 dari kelipatan</option>
+                                            <option value="Nomor 3 dari kelipatan">Nomor 3 dari kelipatan</option>
                                         </select>
 
                                     </div>
@@ -271,10 +281,8 @@
                                             <option value="Tidak Bersekolah">Tidak Bersekolah</option>
                                             <option value="SD">SD</option>
                                             <option value="SMP">SMP</option>
-                                            <option value="SMA">SMA</option>
-                                            <option value="S1">S1</option>
-                                            <option value="S2">S2</option>
-                                            <option value="S3">S3</option>
+                                            <option value="SMA/S1/S2/S3">SMA/S1/S2/S3</option>
+
                                         </select>
 
                                     </div>
@@ -335,10 +343,7 @@
                                             <option value="Tidak Bersekolah">Tidak Bersekolah</option>
                                             <option value="SD">SD</option>
                                             <option value="SMP">SMP</option>
-                                            <option value="SMA">SMA</option>
-                                            <option value="S1">S1</option>
-                                            <option value="S2">S2</option>
-                                            <option value="S3">S3</option>
+                                            <option value="SMA/S1/S2/S3">SMA/S1/S2/S3</option>
                                         </select>
 
                                     </div>

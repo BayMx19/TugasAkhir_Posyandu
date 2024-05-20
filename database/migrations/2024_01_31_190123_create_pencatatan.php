@@ -44,10 +44,12 @@ return new class extends Migration
             $table->string('Drinking_Water');
             $table->string('Toilet_Types');
             $table->string('Wealth_Index');
-            $table->string('p_stunting')->nullable();
-            $table->string('p_wasting')->nullable();
-            $table->string('p_underweight')->nullable();
+            $table->string('p_stunting');
+            $table->string('p_wasting');
+            $table->string('p_underweight');
             $table->string('no_bpjs')->nullable();
+            $table->string('tempat_lahir');
+            $table->string('tgl_lahir');
             $table->timestamps();
         });
     }

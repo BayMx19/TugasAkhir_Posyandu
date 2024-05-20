@@ -40,8 +40,8 @@
                                     <td>
                                         <a href="/detail-pencatatan/{{ encrypt($p->id) }}"><button
                                                 class="btn btn2 btn-success"><i class="ti ti-eye"></i></button></a>
-                                        <a href="/edit-pencatatan/{{ encrypt($p->id) }}"><button
-                                                class="btn btn2 btn-primary"><i class="ti ti-edit"></i></button></a>
+                                        <!-- <a href="/edit-pencatatan/{{ encrypt($p->id) }}"><button
+                                                class="btn btn2 btn-primary"><i class="ti ti-edit"></i></button></a> -->
                                         <a href="/pencatatan/delete/{{ encrypt($p->id) }}"><button
                                                 class="btn btn2 btn-danger"><i class="ti ti-trash"></i></button></a>
                                     </td>
@@ -54,10 +54,10 @@
                     </div>
                 </div>
 
-                <div class="floating-container">
+                <!-- <div class="floating-container">
                     <div class="floating-button"><i class="ti ti-printer"></i></div>
 
-                </div>
+                </div> -->
 
             </div>
         </div>

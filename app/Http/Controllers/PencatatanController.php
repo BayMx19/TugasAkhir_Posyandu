@@ -22,7 +22,7 @@ class PencatatanController extends Controller
     }
     
     public function addPencatatan(){
-        $anak = DB::table('master_anak')->select('id', 'nama_anak', 'nik_anak', 'tgl_lahir' , 'tempat_lahir', 'jk', 'provinsi', 'kota', 'kecamatan', 'kelurahan', 'posyandu', 'kelahiran_ke', 'kembar', 'nama_ibu', 'umur_ibu', 'pendidikan_ibu', 'ibu_bekerja', 'nama_ayah', 'pendidikan_ayah', 'tipe_tt', 'rt', 'rw', 'no_bpjs')->get();
+        $anak = DB::table('master_anak')->select('id', 'nama_anak', 'nik_anak', 'tgl_lahir' , 'tempat_lahir', 'jk', 'provinsi', 'kota', 'kecamatan', 'kelurahan', 'posyandu', 'kelahiran_ke', 'kembar', 'nama_ibu', 'umur_ibu', 'pendidikan_ibu', 'ibu_bekerja', 'nama_ayah', 'pendidikan_ayah', 'tipe_tt', 'rt', 'rw', 'no_bpjs', 'umur')->get();
     // dd($anak);
         
         return view('pencatatan.add-pencatatan', ['anak'=>$anak]);
@@ -37,7 +37,9 @@ class PencatatanController extends Controller
                     'pencatat'=>$request->pencatat,
                     'nama_anak'=>$request->nama_anak,
                     'nik_anak'=>$request->nik_anak,
-                    'Childs_Age'=>$request->childs_age,
+                    'tempat_lahir'=>$request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'Childs_Age'=>$request->Childs_Age,
                     'kondisi'=>$request->kondisi,
                     'Sex'=>$request->Sex,
                     'alamat'=>$request->alamat,
@@ -74,7 +76,7 @@ class PencatatanController extends Controller
                 return redirect('/pencatatan')->with('success', 'Berhasil menambahkan Data Anak.');
             } catch (QueryException $e) {
                 $errorMessage = $e->getMessage();
-                // dd($errorMessage);
+                dd($errorMessage);
                 return redirect('/pencatatan')->with('error', 'Gagal menambahkan Data Anak: Coba Lagi $errorMessage' );
             }
         }
@@ -82,6 +84,8 @@ class PencatatanController extends Controller
         {
             $decryptedId = decrypt($id);
             $pencatatan = Pencatatan::find($decryptedId);
+
+            
 
 
 

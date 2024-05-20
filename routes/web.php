@@ -92,3 +92,4 @@ Route::get('/profile', [ProfileController::class, 'index']);
 // Route::post('/predict', [PredictionController::class, 'predict']);
 
 Route::post('/predict', [PredictionController::class, 'predict']);
+Route::get('/data-chart', 'HomeController@getDataForChart')->name('data.chart');

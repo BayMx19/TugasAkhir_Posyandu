@@ -58,7 +58,7 @@
                                 <div class="row alig n-items-start">
                                     <div class="col-8">
                                         <h5 class="card-title mb-9 fw-semibold">Jumlah Stunting</h5>
-                                        <h4 class="fw-semibold mb-3">120</h4>
+                                        <h4 class="fw-semibold mb-3">{{ $getcountStunting }}</h4>
                                     </div>
                                     <div class="col-4">
                                         <div class="d-flex justify-content-end">
@@ -79,7 +79,7 @@
                                 <div class="row alig n-items-start">
                                     <div class="col-8">
                                         <h5 class="card-title mb-9 fw-semibold">Jumlah Wasting</h5>
-                                        <h4 class="fw-semibold mb-3">120</h4>
+                                        <h4 class="fw-semibold mb-3">{{ $getcountWasting }}</h4>
                                     </div>
                                     <div class="col-4">
                                         <div class="d-flex justify-content-end">
@@ -100,7 +100,7 @@
                                 <div class="row alig n-items-start">
                                     <div class="col-8">
                                         <h5 class="card-title mb-9 fw-semibold">Jumlah Underweight</h5>
-                                        <h4 class="fw-semibold mb-3">120</h4>
+                                        <h4 class="fw-semibold mb-3">{{ $getcountUnderweight }}</h4>
                                     </div>
                                     <div class="col-4">
                                         <div class="d-flex justify-content-end">
