@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
 
@@ -103,6 +104,20 @@
         });
     });
     </script>
+
+    @if (session('toast_error'))
+    <script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: "{{ session('toast_error') }}",
+        showConfirmButton: false,
+        timer: 3000,
+        confirmButtonColor: '#005c97',
+    });
+    </script>
+    @endif
+
 </body>
 
 </html>

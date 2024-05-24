@@ -18,6 +18,8 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Beranda</span>
                 </li>
+
+
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/dashboard' }}" aria-expanded="false">
                         <span>
@@ -30,6 +32,7 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Data Master</span>
                 </li>
+                @if (auth()->user()->role == 'SuperAdmin')
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/master_users' }}" aria-expanded="false">
                         <span>
@@ -38,6 +41,8 @@
                         <span class="hide-menu">Pengguna</span>
                     </a>
                 </li>
+                @endif
+                @if (auth()->user()->role == 'SuperAdmin')
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/master_kader' }}" aria-expanded="false">
                         <span>
@@ -46,6 +51,7 @@
                         <span class="hide-menu">Kader</span>
                     </a>
                 </li>
+                @endif
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ '/master_anak' }}" aria-expanded="false">
                         <span>
