@@ -40,25 +40,46 @@ class HomeController extends Controller
             $getcountWasting = DB::table('pencatatan')->where('p_wasting', 'Wasting')->get()->count();
             $getcountUnderweight = DB::table('pencatatan')->where('p_underweight', 'Underweight')->get()->count();
 
-            $getGraph = DB::table('pencatatan')->get()->count();
+            
+            
 
         // dd($countAnak);
-        return view('dashboard', compact('getcountAnak', 'getcountKaders', 'getcountStunting', 'getcountWasting', 'getcountUnderweight'));
+        // return view('dashboard', compact('getcountAnak', 'getcountKaders', 'getcountStunting', 'getcountWasting', 'getcountUnderweight'));
+
+        return [
+        'getcountAnak' => $getcountAnak,
+        'getcountKaders' => $getcountKaders,
+        'getcountStunting' => $getcountStunting,
+        'getcountWasting' => $getcountWasting,
+        'getcountUnderweight' => $getcountUnderweight,
+    ];
     }
 
-    public function getDataForChart()
-{
-    $data = DB::table('pencatatan')
-            ->select(DB::raw('MONTH(tgl_catat) as bulan'), 
-                     DB::raw('SUM(p_stunting) as p_stunting'), 
-                     DB::raw('SUM(p_wasting) as p_wasting'), 
-                     DB::raw('SUM(p_underweight) as p_underweight'))
-            ->groupBy(DB::raw('MONTH(tgl_catat)'))
-            ->orderBy(DB::raw('MONTH(tgl_catat)'))
+    public function getcountchart(){
+        $datachart = DB::table('pencatatan')->select(
+                DB::raw('EXTRACT(MONTH FROM tgl_catat) as bulan'),
+                DB::raw('SUM(CASE WHEN p_stunting = \'Stunting\' THEN 1 ELSE 0 END) as p_stunting'), 
+                DB::raw('SUM(CASE WHEN p_wasting = \'Wasting\' THEN 1 ELSE 0 END) as p_wasting'), 
+                DB::raw('SUM(CASE WHEN p_underweight = \'Underweight\' THEN 1 ELSE 0 END) as p_underweight'),
+            )
+            ->groupBy(DB::raw('EXTRACT(MONTH FROM tgl_catat)'))
             ->get();
 
-            dd($data);
-            
-    return response()->json($data);
-}
+            $months = array_fill(1, 12, ['p_stunting' => 0, 'p_wasting' => 0, 'p_underweight' => 0]);
+
+    // Populate the array with actual data
+    foreach ($datachart as $data) {
+        $months[$data->bulan] = [
+            'p_stunting' => $data->p_stunting,
+            'p_wasting' => $data->p_wasting,
+            'p_underweight' => $data->p_underweight,
+        ];
+    }
+
+            $counts = $this->getcount();
+
+    return view('dashboard', array_merge($counts, ['datachart' => $months]));
+    }
+    
+
 }

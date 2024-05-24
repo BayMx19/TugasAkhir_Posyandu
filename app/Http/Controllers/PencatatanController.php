@@ -96,73 +96,73 @@ class PencatatanController extends Controller
             return view('pencatatan.detail-pencatatan', compact('pencatatan'));
         }
 
-        public function edit($id)
-    {
-        try {
-        $decryptedId = decrypt($id);
-        $pencatatan = Pencatatan::find($decryptedId);
-        if (!$pencatatan) {
-            return abort(404);
-        }
+    //     public function edit($id)
+    // {
+    //     try {
+    //     $decryptedId = decrypt($id);
+    //     $pencatatan = Pencatatan::find($decryptedId);
+    //     if (!$pencatatan) {
+    //         return abort(404);
+    //     }
 
-        return view('pencatatan.edit-pencatatan', compact('anak'));
-        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
-            Log::error('Decryption error: ' . $e->getMessage());
-            return abort(500, 'Error: Unable to decrypt the ID.');
-        }
+    //     return view('pencatatan.edit-pencatatan', compact('anak'));
+    //     } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+    //         Log::error('Decryption error: ' . $e->getMessage());
+    //         return abort(500, 'Error: Unable to decrypt the ID.');
+    //     }
 
-    }
+    // }
 
-    public function update(Request $request, $id)
-    {
-        try{
-        // return $request;
-        $decryptedId = decrypt($id);
-        $pencatatan = Pencatatan::find($decryptedId);
+    // public function update(Request $request, $id)
+    // {
+    //     try{
+    //     // return $request;
+    //     $decryptedId = decrypt($id);
+    //     $pencatatan = Pencatatan::find($decryptedId);
 
-        if (!$pencatatan) {
-            return abort(404);
-        }
-        DB::table('pencatatan')->where('id', $decryptedId)->update([
-                    'tgl_catat'=> $request->tgl_catat,
-                    'pencatat'=>$request->pencatat,
-                    'nama_anak'=>$request->nama_anak,
-                    'nik_anak'=>$request->nik_anak,
-                    'Childs_Age'=>$request->childs_age,
-                    'kondisi'=>$request->kondisi,
-                    'Sex'=>$request->Sex,
-                    'alamat'=>$request->alamat,
-                    'provinsi'=>$request->provinsi,
-                    'Region'=>$request->Region,
-                    'kecamatan'=>$request->kecamatan,
-                    'kelurahan'=>$request->kelurahan,
-                    'Type_of_Place'=>$request->Type_of_Place,
-                    'posyandu'=>$request->posyandu,
-                    'Birth_Order'=>$request->Birth_Order,
-                    'Twin_Child'=>$request->Twin_Child,
-                    'bb'=>$request->bb,
-                    'pb'=>$request->pb,
-                    'lk'=>$request->lk,
-                    'imd'=>$request->imd,
-                    'nama_ibu'=>$request->nama_ibu,
-                    'Mothers_Age'=>$request->mothers_age,
-                    'Mothers_Working_Status'=>$request->mothers_working_status,
-                    'Mothers_Education'=>$request->mothers_education,
-                    'nama_ayah'=>$request->nama_ayah,
-                    'Fathers_Education'=>$request->fathers_education,
-                    'Drinking_Water'=>$request->Drinking_Water,
-                    'Toilet_Types'=>$request->Toilet_Types,
-                    'Wealth_Index'=>$request->Wealth_Index,
-                    'p_stunting'=>$request->p_stunting,
-                    'p_wasting'=>$request->p_wasting,
-                    'p_underweight'=>$request->p_underweight,
-                    'updated_at' => Carbon::now(),
-        ]);
-        return redirect('/pencatatan')->with('success', 'Berhasil edit Anak.');
-        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
-            return abort(500, 'Error: Unable to decrypt the ID.');
-        }
-    }
+    //     if (!$pencatatan) {
+    //         return abort(404);
+    //     }
+    //     DB::table('pencatatan')->where('id', $decryptedId)->update([
+    //                 'tgl_catat'=> $request->tgl_catat,
+    //                 'pencatat'=>$request->pencatat,
+    //                 'nama_anak'=>$request->nama_anak,
+    //                 'nik_anak'=>$request->nik_anak,
+    //                 'Childs_Age'=>$request->childs_age,
+    //                 'kondisi'=>$request->kondisi,
+    //                 'Sex'=>$request->Sex,
+    //                 'alamat'=>$request->alamat,
+    //                 'provinsi'=>$request->provinsi,
+    //                 'Region'=>$request->Region,
+    //                 'kecamatan'=>$request->kecamatan,
+    //                 'kelurahan'=>$request->kelurahan,
+    //                 'Type_of_Place'=>$request->Type_of_Place,
+    //                 'posyandu'=>$request->posyandu,
+    //                 'Birth_Order'=>$request->Birth_Order,
+    //                 'Twin_Child'=>$request->Twin_Child,
+    //                 'bb'=>$request->bb,
+    //                 'pb'=>$request->pb,
+    //                 'lk'=>$request->lk,
+    //                 'imd'=>$request->imd,
+    //                 'nama_ibu'=>$request->nama_ibu,
+    //                 'Mothers_Age'=>$request->mothers_age,
+    //                 'Mothers_Working_Status'=>$request->mothers_working_status,
+    //                 'Mothers_Education'=>$request->mothers_education,
+    //                 'nama_ayah'=>$request->nama_ayah,
+    //                 'Fathers_Education'=>$request->fathers_education,
+    //                 'Drinking_Water'=>$request->Drinking_Water,
+    //                 'Toilet_Types'=>$request->Toilet_Types,
+    //                 'Wealth_Index'=>$request->Wealth_Index,
+    //                 'p_stunting'=>$request->p_stunting,
+    //                 'p_wasting'=>$request->p_wasting,
+    //                 'p_underweight'=>$request->p_underweight,
+    //                 'updated_at' => Carbon::now(),
+    //     ]);
+    //     return redirect('/pencatatan')->with('success', 'Berhasil edit Anak.');
+    //     } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+    //         return abort(500, 'Error: Unable to decrypt the ID.');
+    //     }
+    // }
     public function delete($id)
     {
         try {

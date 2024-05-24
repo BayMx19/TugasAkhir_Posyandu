@@ -2,14 +2,24 @@ $(function () {
     // =====================================
     // Profit
     // =====================================
+    var datachart = $datachart;
+
     var chartData = {
-        stunting: [],
-        wasting: [],
-        underweight: [],
-        bulanLabels: [],
+        stunting: datachart.map(function (item) {
+            return item.p_stunting;
+        }),
+        wasting: datachart.map(function (item) {
+            return item.p_wasting;
+        }),
+        underweight: datachart.map(function (item) {
+            return item.p_underweight;
+        }),
+        bulanLabels: datachart.map(function (item) {
+            return item.bulan;
+        }),
     };
 
-    var chart = {
+    var options = {
         series: [
             { name: "Stunting:", data: chartData.stunting },
             { name: "Wasting:", data: chartData.wasting },
@@ -59,20 +69,7 @@ $(function () {
 
         xaxis: {
             type: "category",
-            categories: [
-                "Januari",
-                "Februari",
-                "Maret",
-                "April",
-                "Mei",
-                "Juni",
-                "Juli",
-                "Agustus",
-                "September",
-                "Oktober",
-                "November",
-                "Desember",
-            ],
+            categories: chartData.bulanLabels,
             labels: {
                 style: { cssClass: "grey--text lighten-2--text fill-color" },
             },
@@ -112,11 +109,11 @@ $(function () {
         ],
     };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), chart);
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
 
     $.ajax({
-        url: "{{ route('data.chart') }}", // Ganti dengan URL endpoint yang sesuai
+        url: "/getdataforchart",
         type: "GET",
         dataType: "json",
         success: function (response) {
@@ -144,58 +141,4 @@ $(function () {
             console.error(error);
         },
     });
-
-    // =====================================
-    // Breakup
-    // =====================================
-    var breakup = {
-        color: "#adb5bd",
-        series: [38, 40, 25],
-        labels: ["2022", "2021", "2020"],
-        chart: {
-            width: 180,
-            type: "donut",
-            fontFamily: "Plus Jakarta Sans', sans-serif",
-            foreColor: "#adb0bb",
-        },
-        plotOptions: {
-            pie: {
-                startAngle: 0,
-                endAngle: 360,
-                donut: {
-                    size: "75%",
-                },
-            },
-        },
-        stroke: {
-            show: false,
-        },
-
-        dataLabels: {
-            enabled: false,
-        },
-
-        legend: {
-            show: false,
-        },
-        colors: ["#5D87FF", "#ecf2ff", "#F9F9FD"],
-
-        responsive: [
-            {
-                breakpoint: 991,
-                options: {
-                    chart: {
-                        width: 150,
-                    },
-                },
-            },
-        ],
-        tooltip: {
-            theme: "dark",
-            fillSeriesColor: false,
-        },
-    };
-
-    var chart = new ApexCharts(document.querySelector("#breakup"), breakup);
-    chartBreakup.render();
 });

@@ -37,6 +37,8 @@ Auth::routes();
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/dashboard', [HomeController::class, 'getcount'])->name('getcount');
+Route::get('/dashboard', [HomeController::class, 'getcountchart'])->name('getcountchart');
+// Route::get('/dashboard', [HomeController::class, 'getdataforchart'])->name('getdataforchart');
 // Route::get('/dashboard', [HomeController::class, 'getcountAnak'])->name('getcountAnak');
 
 
@@ -92,4 +94,4 @@ Route::get('/profile', [ProfileController::class, 'index']);
 // Route::post('/predict', [PredictionController::class, 'predict']);
 
 Route::post('/predict', [PredictionController::class, 'predict']);
-Route::get('/data-chart', 'HomeController@getDataForChart')->name('data.chart');
+Route::get('/getDataForChart', 'HomeController@getDataForChart')->name('data.chart');

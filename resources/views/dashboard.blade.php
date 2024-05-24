@@ -125,16 +125,16 @@
                                     <div class="mb-3 mb-sm-0">
                                         <h5 class="card-title fw-semibold">Penderita Gizi Buruk</h5>
                                     </div>
-                                    <div class="row">
+                                    <!-- <div class="row">
 
                                         <select class="form-select">
                                             <option disabled>Pilih Tahun</option>
                                             <option value="1">2023</option>
                                             <option value="2">2024</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div id="chart"></div>
+                                <canvas id="myChart" width="400" height="200"></canvas>
                             </div>
                         </div>
                     </div>
@@ -145,4 +145,60 @@
     </div>
 </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var datachart = @json($datachart);
+
+    var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
+        'Oktober', 'November', 'Desember'
+    ];
+    var p_stunting = [];
+    var p_wasting = [];
+    var p_underweight = [];
+
+    for (var i = 1; i <= 12; i++) {
+        p_stunting.push(datachart[i]['p_stunting']);
+        p_wasting.push(datachart[i]['p_wasting']);
+        p_underweight.push(datachart[i]['p_underweight']);
+    }
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: bulan,
+            datasets: [{
+                    label: 'Stunting',
+                    data: p_stunting,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Wasting',
+                    data: p_wasting,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Underweight',
+                    data: p_underweight,
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+</script>
+<script src="{{ asset('assets/js/chart.js') }}"></script>
 @endsection

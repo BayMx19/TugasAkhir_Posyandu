@@ -40,7 +40,7 @@
                                     <div class="mb-3">
                                         <label for="nama_anak" class="form-label">Nama Anak<label
                                                 class="text-red">*</label></label>
-                                        <select class="form-control" id="nama_anak" name="nama_anak" required>
+                                        <select class="form-control select2" id="nama_anak" name="nama_anak" required>
                                             <option value="" selected disabled>Pilih Nama Anak</option>
                                             @foreach ($anak as $item)
                                             <option data-namaanak="{{ $item->nama_anak }}"
@@ -654,6 +654,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('rw').value = data.rw;
         document.getElementById('no_bpjs').value = data.nobpjs;
     });
+});
+$(document).ready(function() {
+    $('.select2').select2();
 });
 </script>
 @endsection
