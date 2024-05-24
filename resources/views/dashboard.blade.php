@@ -118,6 +118,69 @@
 
                 </div>
                 <div class="row">
+                    <h5 class="card-title fw-semibold mt-2 mb-3">Sebaran Gizi Anak</h5>
+                    <div class="col-lg-4 d-flex align-items-strech">
+                        <div class="card w-100">
+                            <div class="card-body">
+                                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                                    <div class="mb-3 mb-sm-0">
+                                        <h5 class="card-title fw-semibold">Anak Stunting</h5>
+                                    </div>
+
+                                </div>
+                                <div class="chart-jumlah">
+                                    <canvas id="p_stuntingChart">
+                                    </canvas>
+
+                                </div><br>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-flex align-items-strech">
+                        <div class="card w-100">
+                            <div class="card-body">
+                                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                                    <div class="mb-3 mb-sm-0">
+                                        <h5 class="card-title fw-semibold">Anak Wasting</h5>
+                                    </div>
+
+                                </div>
+                                <div class="chart-jumlah">
+                                    <canvas id="p_wastingChart">
+                                    </canvas>
+
+                                </div><br>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-flex align-items-strech">
+                        <div class="card w-100">
+                            <div class="card-body">
+                                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                                    <div class="mb-3 mb-sm-0">
+                                        <h5 class="card-title fw-semibold">Anak Underweight</h5>
+                                    </div>
+
+                                </div>
+                                <div class="chart-jumlah">
+                                    <canvas id="p_underweightChart">
+                                    </canvas>
+
+                                </div><br>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-12 d-flex align-items-strech">
                         <div class="card w-100">
                             <div class="card-body">
@@ -125,20 +188,61 @@
                                     <div class="mb-3 mb-sm-0">
                                         <h5 class="card-title fw-semibold">Penderita Gizi Buruk</h5>
                                     </div>
-                                    <!-- <div class="row">
 
-                                        <select class="form-select">
-                                            <option disabled>Pilih Tahun</option>
-                                            <option value="1">2023</option>
-                                            <option value="2">2024</option>
-                                        </select>
-                                    </div> -->
                                 </div>
-                                <canvas id="myChart" width="400" height="200"></canvas>
+                                <div class="chart-jumlah">
+                                    <canvas id="myChart">
+                                    </canvas>
+
+                                </div><br>
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row text-center">
+                    <div class="col-lg-6 d-flex align-items-strech">
+                        <div class="card w-100">
+                            <div class="card-body">
+                                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                                    <div class="mb-3 mb-sm-0">
+                                        <h5 class="card-title fw-semibold">Jenis Kelamin Anak</h5>
+                                    </div>
+
+                                </div>
+
+                                <div class="chart-jumlah">
+                                    <canvas id="genderChart"></canvas>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-strech">
+                        <div class="card w-100">
+                            <div class="card-body">
+                                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                                    <div class="mb-3 mb-sm-0">
+                                        <h5 class="card-title fw-semibold">Kondisi Anak</h5>
+                                    </div>
+
+                                </div>
+
+                                <div class="chart-jumlah">
+                                    <canvas id="kondisiChart"></canvas>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -168,23 +272,23 @@ document.addEventListener('DOMContentLoaded', function() {
         data: {
             labels: bulan,
             datasets: [{
-                    label: 'Stunting',
+                    label: 'Stunting (anak)',
                     data: p_stunting,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    backgroundColor: 'red',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 },
                 {
-                    label: 'Wasting',
+                    label: 'Wasting (anak)',
                     data: p_wasting,
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    backgroundColor: 'lightblue',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 },
                 {
-                    label: 'Underweight',
+                    label: 'Underweight (anak)',
                     data: p_underweight,
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    backgroundColor: 'yellow',
                     borderColor: 'rgba(255, 206, 86, 1)',
                     borderWidth: 1
                 }
@@ -196,6 +300,133 @@ document.addEventListener('DOMContentLoaded', function() {
                     beginAtZero: true
                 }
             }
+        }
+    });
+
+    var ctxGender = document.getElementById('genderChart').getContext('2d');
+    var genderCounts = @json($genderCounts);
+
+    var genderChart = new Chart(ctxGender, {
+        type: 'pie',
+        data: {
+            labels: ['Laki-Laki', 'Perempuan'],
+            datasets: [{
+                data: [genderCounts['Laki-Laki'], genderCounts['Perempuan']],
+                backgroundColor: [
+                    'darkblue',
+                    'red'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    var ctxKondisi = document.getElementById('kondisiChart').getContext('2d');
+    var kondisiCounts = @json($kondisiCounts);
+
+    var kondisiChart = new Chart(ctxKondisi, {
+        type: 'pie',
+        data: {
+            labels: ['Hidup', 'Meninggal'],
+            datasets: [{
+                data: [kondisiCounts['hidup'], kondisiCounts['meninggal']],
+                backgroundColor: [
+                    'darkgreen',
+                    'red'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+
+    var ctxP_stunting = document.getElementById('p_stuntingChart').getContext('2d');
+    var p_stuntingCounts = @json($p_stuntingCounts);
+
+    var p_stuntingChart = new Chart(ctxP_stunting, {
+        type: 'pie',
+        data: {
+            labels: ['Stunting', 'Tidak Stunting'],
+            datasets: [{
+                data: [p_stuntingCounts['Stunting'], p_stuntingCounts['Tidak Stunting']],
+                backgroundColor: [
+                    'darkgreen',
+                    'red'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    var ctxP_wasting = document.getElementById('p_wastingChart').getContext('2d');
+    var p_wastingCounts = @json($p_wastingCounts);
+
+    var p_wastingChart = new Chart(ctxP_wasting, {
+        type: 'pie',
+        data: {
+            labels: ['Wasting', 'Tidak Wasting'],
+            datasets: [{
+                data: [p_wastingCounts['Wasting'], p_wastingCounts['Tidak Wasting']],
+                backgroundColor: [
+                    'darkgreen',
+                    'red'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    var ctxp_underweight = document.getElementById('p_underweightChart').getContext('2d');
+    var p_underweightCounts = @json($p_underweightCounts);
+
+    var p_underweightChart = new Chart(ctxp_underweight, {
+        type: 'pie',
+        data: {
+            labels: ['Underweight', 'Tidak Underweight'],
+            datasets: [{
+                data: [p_underweightCounts['Underweight'], p_underweightCounts[
+                    'Tidak Underweight']],
+                backgroundColor: [
+                    'darkgreen',
+                    'red'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
         }
     });
 });

@@ -255,3 +255,12 @@ body {
 .hasil-prediksi {
     text-align: center !important;
 }
+
+.chart-jumlah {
+    width: 100%;
+    height: 100%;
+}
+.pie-chart-gender {
+    width: 500px;
+    height: 500px;
+}
