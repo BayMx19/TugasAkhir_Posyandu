@@ -54,13 +54,50 @@
                     </div>
                 </div>
 
-                <!-- <div class="floating-container">
-                    <div class="floating-button"><i class="ti ti-printer"></i></div>
+                <div class="floating-container">
+                    <div class="floating-button" data-bs-toggle="modal" data-bs-target="#downloadModal"><i
+                            class="ti ti-printer"></i></div>
 
-                </div> -->
+                </div>
+                <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog"
+                    aria-labelledby="downloadModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="downloadModalLabel">Download Data Pencatatan</h5>
 
+                            </div>
+                            <div class="modal-body">
+                                <form id="downloadForm" method="GET" action="{{ route('data.download') }}">
+                                    <div class="form-group">
+                                        <label for="tgl_catat_dari">Dari Tanggal</label>
+                                        <input type="date" class="form-control" id="tgl_catat_dari"
+                                            name="tgl_catat_dari">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tgl_catat_hingga">Hingga Tanggal</label>
+                                        <input type="date" class="form-control" id="tgl_catat_hingga"
+                                            name="tgl_catat_hingga">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary"
+                                    onclick="submitDownloadForm()">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
+
+<script>
+function submitDownloadForm() {
+    document.getElementById('downloadForm').submit();
+}
+</script>
 @endsection

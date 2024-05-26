@@ -11,6 +11,9 @@ use App\Http\Controllers\PencatatanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PredictionController;
 use App\Http\Middleware\CheckRole;
+use App\Http\Controllers\DownloadPencatatanController;
+use Psy\VersionUpdater\Downloader;
+
 // use Symfony\Component\HttpFoundation\Request;
 // use Phpml\NeuralNetwork\Node\Input;
 
@@ -40,7 +43,7 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/dashboard', [HomeController::class, 'getcount'])->name('getcount');
 Route::get('/dashboard', [HomeController::class, 'getcountchart'])->name('getcountchart');
 Route::post('/predict', [PredictionController::class, 'predict']);
-
+Route::get('/download-data', [DownloadPencatatanController::class, 'download'])->name('data.download');
 
         // START USERS
     Route::get('/master_users', [UsersController::class, 'index']);
@@ -63,38 +66,6 @@ Route::post('/predict', [PredictionController::class, 'predict']);
     Route::post('/edit-kader/{id}/update', [KaderController::class, 'update']);
     Route::get('/delete-kader/{id}', [KaderController::class, 'delete'])->name('delete-kader');
 
-    // END KADER
-// Route::middleware('superadmin')->group(function() {
-
-//     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-//     Route::get('/dashboard', [HomeController::class, 'getcount'])->name('getcount');
-//     Route::get('/dashboard', [HomeController::class, 'getcountchart'])->name('getcountchart');
-//  // START USERS
- 
-//     Route::get('/master_users', [UsersController::class, 'index']);
-//     Route::get('/add-users', function () {
-//         return view('master-users.add-users');
-//     });
-//     Route::get('/edit-users/{id}', [UsersController::class, 'edit']);
-//     Route::post('/edit-users/{id}/update', [UsersController::class, 'update']);
-//     Route::get('/detail-users/{id}', [UsersController::class, 'detail']);
-//     Route::post('/add-users/store', [UsersController::class, 'input']);
-//     Route::get('/delete-users/{id}', [UsersController::class, 'delete'])->name('delete-user');
-//     // END USERS
-
-//     // START KADER
-//     Route::get('/master_kader', [KaderController::class, 'index']);
-//     Route::get('/add-kader', [KaderController::class, 'addKader']);
-//     Route::post('/add-kader/store', [KaderController::class, 'input']);
-//     Route::get('/detail-kader/{id}', [KaderController::class, 'detail']);
-//     Route::get('/edit-kader/{id}', [KaderController::class, 'edit']);
-//     Route::post('/edit-kader/{id}/update', [KaderController::class, 'update']);
-//     Route::get('/delete-kader/{id}', [KaderController::class, 'delete'])->name('delete-kader');
-
-//     // END KADER
-
-
-// });
 
 
    
