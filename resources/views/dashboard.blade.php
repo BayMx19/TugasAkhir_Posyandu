@@ -274,21 +274,21 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                     label: 'Stunting (anak)',
                     data: p_stunting,
-                    backgroundColor: 'red',
+                    backgroundColor: '#dc3545',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 },
                 {
                     label: 'Wasting (anak)',
                     data: p_wasting,
-                    backgroundColor: 'lightblue',
+                    backgroundColor: '#4E73DF',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 },
                 {
                     label: 'Underweight (anak)',
                     data: p_underweight,
-                    backgroundColor: 'yellow',
+                    backgroundColor: '#FFFDB5',
                     borderColor: 'rgba(255, 206, 86, 1)',
                     borderWidth: 1
                 }
@@ -313,8 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 data: [genderCounts['Laki-Laki'], genderCounts['Perempuan']],
                 backgroundColor: [
-                    'darkblue',
-                    'red'
+                    '#4E73DF',
+                    '#dc3545'
                 ],
                 borderColor: [
                     'rgba(54, 162, 235, 1)',
@@ -338,8 +338,8 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 data: [kondisiCounts['hidup'], kondisiCounts['meninggal']],
                 backgroundColor: [
-                    'darkgreen',
-                    'red'
+                    '#4E73DF',
+                    '#dc3545'
                 ],
                 borderColor: [
                     'rgba(54, 162, 235, 1)',
@@ -364,8 +364,8 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 data: [p_stuntingCounts['Stunting'], p_stuntingCounts['Tidak Stunting']],
                 backgroundColor: [
-                    'darkgreen',
-                    'red'
+                    '#4E73DF',
+                    '#dc3545'
                 ],
                 borderColor: [
                     'rgba(54, 162, 235, 1)',
@@ -389,8 +389,8 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 data: [p_wastingCounts['Wasting'], p_wastingCounts['Tidak Wasting']],
                 backgroundColor: [
-                    'darkgreen',
-                    'red'
+                    '#4E73DF',
+                    '#dc3545'
                 ],
                 borderColor: [
                     'rgba(54, 162, 235, 1)',
@@ -415,8 +415,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 data: [p_underweightCounts['Underweight'], p_underweightCounts[
                     'Tidak Underweight']],
                 backgroundColor: [
-                    'darkgreen',
-                    'red'
+                    '#4E73DF',
+                    '#dc3545'
                 ],
                 borderColor: [
                     'rgba(54, 162, 235, 1)',
