@@ -69,15 +69,28 @@
                             </div>
                             <div class="modal-body">
                                 <form id="downloadForm" method="GET" action="{{ route('data.download') }}">
-                                    <div class="form-group">
-                                        <label for="tgl_catat_dari">Dari Tanggal</label>
-                                        <input type="date" class="form-control" id="tgl_catat_dari"
-                                            name="tgl_catat_dari">
+
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p class="text-popup-download">Masukkan Tanggal</p>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="tgl_catat_hingga">Hingga Tanggal</label>
-                                        <input type="date" class="form-control" id="tgl_catat_hingga"
-                                            name="tgl_catat_hingga">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="tgl_catat_dari">Dari</label>
+                                                <input type="date" class="form-control" id="tgl_catat_dari"
+                                                    name="tgl_catat_dari">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="tgl_catat_hingga">Hingga</label>
+                                                <input type="date" class="form-control" id="tgl_catat_hingga"
+                                                    name="tgl_catat_hingga">
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
