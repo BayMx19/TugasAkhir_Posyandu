@@ -8,13 +8,20 @@ use Database\Seeders\PencatatanSeeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 
 class PencatatanController extends Controller
 {
     public function index()
     {
+        $id = Auth::user()->username;
+        // dd($id);
+        if ($id === 'SuperAdmin') {
         $pencatatan = DB::table('pencatatan')->get();
+        } else {
+            $pencatatan = DB::table('pencatatan')->where('pencatat', $id)->get();
+        }
 
         return view('pencatatan.pencatatan', compact('pencatatan'));
     }
