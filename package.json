@@ -15,6 +15,7 @@
     "dependencies": {
         "chart.js": "^4.4.3",
         "chartjs": "^0.3.24",
-        "sweetalert2": "^11.11.0"
+        "select2": "^4.1.0-rc.0",
+        "sweetalert2": "^11.6.13"
     }
 }

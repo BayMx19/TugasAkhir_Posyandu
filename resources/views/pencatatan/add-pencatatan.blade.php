@@ -212,14 +212,20 @@
                                     <div class="mb-3">
                                         <label for="bb" class="form-label">Berat Badan<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="bb" name="bb" required>
+                                        <input type="text" class="form-control" id="bb" name="bb" required
+                                            oninput="checkWeight()">
+                                        <div id="weight-warning" style="display:none; color: red;">Berat badan tidak
+                                            boleh lebih dari 120 kg.</div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label for="pb" class="form-label">Panjang Badan<label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" id="pb" name="pb" required>
+                                        <input type="text" class="form-control" id="pb" name="pb" required
+                                            oninput="checkHeight()">
+                                        <div id="height-warning" style="display:none; color: red;">Panjang badan tidak
+                                            boleh lebih dari 123.7 cm.</div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -418,6 +424,30 @@
     </div>
 </div>
 <script>
+function checkWeight() {
+    const weightInput = document.getElementById('bb');
+    const warningMessage = document.getElementById('weight-warning');
+    const weight = parseFloat(weightInput.value);
+
+    if (weight > 120) {
+        warningMessage.style.display = 'block';
+    } else {
+        warningMessage.style.display = 'none';
+    }
+}
+
+function checkHeight() {
+    const heightInput = document.getElementById('pb');
+    const warningMessage = document.getElementById('height-warning');
+    const height = parseFloat(heightInput.value);
+
+    if (height > 123.7) {
+        warningMessage.style.display = 'block';
+    } else {
+        warningMessage.style.display = 'none';
+    }
+}
+
 function calculateAge() {
     var birthdate = document.getElementById('tgl_lahir_anak').value;
 
@@ -776,9 +806,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
-
-$(document).ready(function() {
-    $('.select2').select2();
+$('.select2').select2({
+    placeholder: "Pilih Nama Anak",
+    allowClear: true
 });
 </script>
 @endsection
