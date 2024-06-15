@@ -38,7 +38,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 
 Auth::routes();
-
+    
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/dashboard', [HomeController::class, 'getcount'])->name('getcount');
 Route::get('/dashboard', [HomeController::class, 'getcountchart'])->name('getcountchart');

@@ -15,13 +15,7 @@ class PencatatanController extends Controller
 {
     public function index()
     {
-        $id = Auth::user()->username;
-        // dd($id);
-        if ($id === 'SuperAdmin') {
         $pencatatan = DB::table('pencatatan')->get();
-        } else {
-            $pencatatan = DB::table('pencatatan')->where('pencatat', $id)->get();
-        }
 
         return view('pencatatan.pencatatan', compact('pencatatan'));
     }
@@ -29,10 +23,11 @@ class PencatatanController extends Controller
     }
     
     public function addPencatatan(){
-        $anak = DB::table('master_anak')->select('id', 'nama_anak', 'nik_anak', 'tgl_lahir' , 'tempat_lahir', 'jk', 'provinsi', 'kota', 'kecamatan', 'kelurahan', 'posyandu', 'kelahiran_ke', 'kembar', 'nama_ibu', 'umur_ibu', 'pendidikan_ibu', 'ibu_bekerja', 'nama_ayah', 'pendidikan_ayah', 'tipe_tt', 'rt', 'rw', 'no_bpjs', 'umur')->get();
+        $anak = DB::table('master_anak')->select('id', 'alamat', 'provinsi',  'nama_anak', 'nik_anak', 'tgl_lahir' , 'tempat_lahir', 'jk', 'provinsi', 'kota', 'kecamatan', 'kelurahan', 'posyandu', 'kelahiran_ke', 'kembar', 'nama_ibu', 'umur_ibu', 'pendidikan_ibu', 'ibu_bekerja', 'nama_ayah', 'pendidikan_ayah', 'tipe_tt', 'rt', 'rw', 'no_bpjs', 'umur', 'tgl_lahir_ibu')->get();
+        $pencatat = DB::table('master_users')->select('username')->where('role', 'Kader')->get();
     // dd($anak);
         
-        return view('pencatatan.add-pencatatan', ['anak'=>$anak]);
+        return view('pencatatan.add-pencatatan', ['anak'=>$anak, 'pencatat'=>$pencatat]);
 
     }
     public function input(Request $request)
@@ -47,7 +42,7 @@ class PencatatanController extends Controller
                     'tempat_lahir'=>$request->tempat_lahir,
                     'tgl_lahir' => $request->tgl_lahir,
                     'Childs_Age'=>$request->Childs_Age,
-                    'kondisi'=>$request->kondisi,
+                    
                     'Sex'=>$request->Sex,
                     'alamat'=>$request->alamat,
                     'provinsi'=>$request->provinsi,
@@ -77,6 +72,8 @@ class PencatatanController extends Controller
                     'p_stunting'=>$request->p_stunting,
                     'p_wasting'=>$request->p_wasting,
                     'p_underweight'=>$request->p_underweight,
+                    'tgl_lahir_ibu'=>$request->tanggal_lahir_ibu,
+                    'keterangan'=>$request->keterangan,
                     'created_at' => Carbon::now(),
                 ]);
 
@@ -91,6 +88,7 @@ class PencatatanController extends Controller
         {
             $decryptedId = decrypt($id);
             $pencatatan = Pencatatan::find($decryptedId);
+            // dd($pencatatan);
 
             
 

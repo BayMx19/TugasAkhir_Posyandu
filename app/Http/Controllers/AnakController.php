@@ -20,7 +20,9 @@ class AnakController extends Controller
 
     public function addAnak(){
         // dd($users);
-        return view('master-anak.add-anak');
+        $pencatat = DB::table('master_users')->select('username')->where('role', 'Kader')->get();
+        // dd($pencatat);
+        return view('master-anak.add-anak', compact('pencatat'));
 
     }
     public function input(Request $request)

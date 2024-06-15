@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nama_anak')->nullable();
             $table->string('nik_anak')->nullable();
             $table->string('Childs_Age');
-            $table->string('kondisi', 191)->nullable();
             $table->string('Sex');
             $table->string('alamat')->nullable();
             $table->string('provinsi', 191)->nullable();
@@ -50,6 +49,8 @@ return new class extends Migration
             $table->string('no_bpjs')->nullable();
             $table->string('tempat_lahir');
             $table->string('tgl_lahir');
+            $table->string('tgl_lahir_ibu');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

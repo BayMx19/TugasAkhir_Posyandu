@@ -7,7 +7,7 @@
             <div class="card-body">
                 <h5 class="card-title fw-bold mb-4"><a href="{{ '/pencatatan' }}"><button
                             class="btn btn2 btn-primary"><i class="ti ti-arrow-left"></i></button></a> <b
-                        class="mx-2">Tambah Pencatatan</b>
+                        class="mx-2">Detail Pencatatan</b>
                 </h5>
                 <div class="card">
                     <div class="card-body">
@@ -87,6 +87,14 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="mb-3">
+                                        <label for="provinsi" class="form-label">Provinsi<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="provinsi" name="provinsi"
+                                            value="{{ $pencatatan->provinsi }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
                                         <label for="Region" class="form-label">Kota / Kabupaten<label
                                                 class="text-red">*</label></label>
                                         <input type="text" class="form-control" id="kota_anak"
@@ -127,6 +135,14 @@
                                                     id="rw" name="rw" required>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="alamat" class="form-label">Alamat<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" id="alamat"
+                                            value="{{ $pencatatan->alamat }}" name="alamat" readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -204,6 +220,14 @@
                                                 class="text-red">*</label></label>
                                         <input type="text" class="form-control" value="{{ $pencatatan->nama_ibu }}"
                                             id="nama_ibu" name="nama_ibu" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="umur_ibu" class="form-label">Tanggal Lahir Ibu<label
+                                                class="text-red">*</label></label>
+                                        <input type="text" class="form-control" value="{{ $pencatatan->tgl_lahir_ibu }}"
+                                            id="tanggal_lahir_ibu" name="tanggal_lahir_ibu" readonly>
                                     </div>
                                 </div>
 
@@ -332,6 +356,19 @@
 
                                         </div>
                                     </div>
+                                    <div class="col-sm-12 mt-3">
+                                        <div class="mb-3">
+                                            <label for="keterangan" class="form-label">Keterangan<label
+                                                    class="text-red">*</label></label>
+                                            <input type="text" class="form-control hasil-prediksi"
+                                                id="keterangan_display" name="keterangan_display" rows="5"
+                                                value="{{$pencatatan->keterangan}}" readonly>
+                                            <input type="hidden" class="form-control hasil-prediksi" id="keterangan"
+                                                name="keterangan" required>
+
+                                        </div>
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -352,7 +389,7 @@
 </div>
 <script>
 function calculateAge() {
-    var birthdate = document.getElementById('tgl_lahir').value;
+    var birthdate = document.getElementById('tgl_lahir_anak').value;
 
     var today = new Date();
     var birthDate = new Date(birthdate);
@@ -378,15 +415,77 @@ function calculateAge() {
         ageDisplay += ageYears + ' Tahun ';
     }
     if (ageMonths > 0) {
-        ageDisplay += ageMonths + ' Bulan ';
-    }
-    if (ageDays > 0) {
-        ageDisplay += ageDays + ' Hari';
+        ageDisplay += ageMonths + ' Bulan';
     }
 
+
     document.getElementById('umurDisplay').value = ageDisplay.trim();
-    document.getElementById('umur').value = ageDisplay.trim();
 }
+
+function calculateAgeIbu() {
+    var birthdate = document.getElementById('tanggal_lahir_ibu').value;
+
+    var today = new Date();
+    var birthDate = new Date(birthdate);
+    var ageYears = today.getFullYear() - birthDate.getFullYear();
+    var ageMonths = today.getMonth() - birthDate.getMonth();
+    var ageDays = today.getDate() - birthDate.getDate();
+
+    // Jika hari ini adalah sebelum tanggal lahir di bulan ini, kurangi satu bulan dari umur
+    if (ageDays < 0) {
+        ageMonths--;
+        ageDays += new Date(today.getFullYear(), today.getMonth(), 0)
+            .getDate(); // Tambahkan jumlah hari di bulan sebelumnya
+    }
+
+    // Jika bulan ini adalah sebelum bulan lahir, kurangi satu tahun dari umur dan tambahkan 12 bulan
+    if (ageMonths < 0) {
+        ageYears--;
+        ageMonths += 12;
+    }
+
+    var ageDisplay = '';
+    if (ageYears > 0) {
+        ageDisplay += ageYears + ' Tahun';
+    } else {
+        ageDisplay = '0 Tahun'; // Handle case for less than one year
+    }
+
+
+    document.getElementById('umur_ibu').value = ageDisplay.trim();
+}
+
+function checkPredictions() {
+    const stunting = document.getElementById('p_stunting_display').value;
+    const wasting = document.getElementById('p_wasting').value;
+    const underweight = document.getElementById('p_underweight').value;
+    console.log(stunting);
+    const keteranganDisplay = document.getElementById('keterangan_display');
+    const keteranganHidden = document.getElementById('keterangan');
+
+    let keterangan = '';
+
+    if (stunting === 'Stunting') {
+        keterangan +=
+            'Stunting: Perlu Pencegahan. Berikan makanan bergizi, Periksakan ke dokter, Berikan vitamin sesuai anjuran.\n';
+    }
+    if (wasting === 'Wasting') {
+        keterangan +=
+            'Wasting: Perlu Pencegahan. Berikan makanan tinggi kalori, Konsultasi dengan ahli gizi, Pantau berat badan secara rutin.\n';
+    }
+    if (underweight === 'Underweight') {
+        keterangan +=
+            'Underweight: Perlu Pencegahan. Tambah asupan makanan bergizi, Berikan makanan lebih sering, Konsultasi ke dokter anak.\n';
+    }
+
+    if (!stunting && !wasting && !underweight) {
+        keterangan = 'Sehat';
+    }
+
+    keteranganDisplay.value = keterangan.trim();
+    keteranganHidden.value = keterangan.trim();
+}
+
 
 function showSwal() {
     Swal.fire({
@@ -420,7 +519,7 @@ function sendColab() {
     }).then((result) => {
         if (result.isConfirmed) {
             // Ambil nilai dari form input
-            const childAge = document.getElementById('umur').value; // Childs_Age
+            const childAge = document.getElementById('umurDisplay').value; // Childs_Age
             let childAgeMonths;
 
             if (childAge.includes('Tahun') && childAge.includes('Bulan')) {
@@ -558,7 +657,8 @@ function sendColab() {
                     document.getElementById("p_wasting_display").value = data["Hasil Prediksi Wasting"];
                     document.getElementById("p_underweight_display").value = data[
                         "Hasil Prediksi Underweight"];
-
+                    // console.log("Data:", data);
+                    checkPredictions();
                 })
                 .catch(error => {
                     // Tangani kesalahan jika terjadi
@@ -566,20 +666,34 @@ function sendColab() {
                 });
 
 
+
+
         }
     });
 }
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const namaAnak = document.getElementById('nama_anak');
 
     namaAnak.addEventListener('change', function() {
         const selectedOption = namaAnak.options[namaAnak.selectedIndex];
+        const tgl_lahir_anak = selectedOption.getAttribute('data-tgllahir');
+        document.getElementById('tgl_lahir_anak').value = tgl_lahir_anak;
+
+        // Calculate age after setting the birthdate
+        calculateAge();
+        const tgl_lahir_ibu = selectedOption.getAttribute('data-tgllahiribu');
+        document.getElementById('tanggal_lahir_ibu').value = tgl_lahir_ibu;
+
+        // Calculate age after setting the birthdate
+        calculateAgeIbu();
+
 
         const data = {
             namaAnak: selectedOption.getAttribute('data-namaanak'),
             nikAnak: selectedOption.getAttribute('data-nik'),
-            umur: selectedOption.getAttribute('data-umur'),
+            tgllahirIbu: selectedOption.getAttribute('data-tgllahiribu'),
             tempatlahirAnak: selectedOption.getAttribute('data-tempatlahir'),
             tgllahirAnak: selectedOption.getAttribute('data-tgllahir'),
             jkAnak: selectedOption.getAttribute('data-jkanak'),
@@ -591,7 +705,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             kelahirankeAnak: selectedOption.getAttribute('data-kelahirankeanak'),
             kembarAnak: selectedOption.getAttribute('data-kembaranak'),
             ibuAnak: selectedOption.getAttribute('data-ibuanak'),
-            umuribuAnak: selectedOption.getAttribute('data-umuribuanak'),
+
             pendidikanibuAnak: selectedOption.getAttribute('data-pendidikanibuanak'),
             kerjaibuAnak: selectedOption.getAttribute('data-kerjaibuanak'),
             ayahAnak: selectedOption.getAttribute('data-ayahanak'),
@@ -604,7 +718,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         // Set the values of the inputs
         document.getElementById('nik_anak').value = data.nikAnak;
-        document.getElementById('umur').value = data.umur;
+        document.getElementById('tanggal_lahir_ibu').value = data.tgllahirIbu;
         document.getElementById('tempat_lahir_anak').value = data.tempatlahirAnak;
         document.getElementById('tgl_lahir_anak').value = data.tgllahirAnak;
         document.getElementById('jk_anak').value = data.jkAnak;
@@ -616,7 +730,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('kelahiran_ke_anak').value = data.kelahirankeAnak;
         document.getElementById('kembar_anak').value = data.kembarAnak;
         document.getElementById('nama_ibu').value = data.ibuAnak;
-        document.getElementById('umur_ibu').value = data.umuribuAnak;
+
         document.getElementById('pendidikan_ibu').value = data.pendidikanibuAnak;
         document.getElementById('ibu_bekerja').value = data.kerjaibuAnak;
         document.getElementById('nama_ayah').value = data.ayahAnak;
@@ -624,7 +738,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('rt').value = data.rt;
         document.getElementById('rw').value = data.rw;
         document.getElementById('no_bpjs').value = data.nobpjs;
+        checkPredictions();
     });
+});
+
+
+$(document).ready(function() {
+    $('.select2').select2();
 });
 </script>
 @endsection

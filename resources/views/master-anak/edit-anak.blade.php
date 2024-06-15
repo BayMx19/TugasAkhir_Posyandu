@@ -424,15 +424,30 @@ function calculateAge() {
 
     var today = new Date();
     var birthDate = new Date(birthdate);
-    var age = today.getFullYear() - birthDate.getFullYear();
+    var ageYears = today.getFullYear() - birthDate.getFullYear();
+    var ageMonths = today.getMonth() - birthDate.getMonth();
 
-    if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() <
-            birthDate.getDate())) {
-        age--;
+    if (today.getDate() < birthDate.getDate()) {
+        ageMonths--;
     }
 
-    document.getElementById('umurDisplay').value = age + ' Tahun';
-    document.getElementById('umur').value = age + ' Tahun';
+    if (ageMonths < 0) {
+        ageYears--;
+        ageMonths = 12 - birthDate.getMonth() + today.getMonth();
+    }
+
+    if (ageYears > 0) {
+        var ageDisplay = ageYears + ' Tahun';
+    } else {
+        var ageDisplay = '';
+    }
+
+    if (ageMonths > 0 || (ageMonths == 0 && today.getDate() >= birthDate.getDate())) {
+        ageDisplay += (ageDisplay ? ' ' : '') + ageMonths + ' Bulan';
+    }
+
+    document.getElementById('umurDisplay').value = ageDisplay;
+    document.getElementById('umur').value = ageDisplay;
 }
 
 function calculateAgeIbu() {
@@ -440,15 +455,18 @@ function calculateAgeIbu() {
 
     var today = new Date();
     var birthDate = new Date(birthdate);
-    var age = today.getFullYear() - birthDate.getFullYear();
+    var ageYears = today.getFullYear() - birthDate.getFullYear();
 
-    if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() <
-            birthDate.getDate())) {
-        age--;
+    // Adjust if the birthday hasn't occurred yet this year
+    if (today.getMonth() < birthDate.getMonth() ||
+        (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+        ageYears--;
     }
 
-    document.getElementById('umurDisplay_ibu').value = age + ' Tahun';
-    document.getElementById('umur_ibu').value = age + ' Tahun';
+    var ageDisplay = ageYears + ' Tahun';
+
+    document.getElementById('umurDisplay_ibu').value = ageDisplay;
+    document.getElementById('umur_ibu').value = ageDisplay;
 }
 
 function calculateAgeAyah() {
@@ -456,15 +474,27 @@ function calculateAgeAyah() {
 
     var today = new Date();
     var birthDate = new Date(birthdate);
-    var age = today.getFullYear() - birthDate.getFullYear();
+    var ageYears = today.getFullYear() - birthDate.getFullYear();
 
-    if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() <
-            birthDate.getDate())) {
-        age--;
+    // Adjust if the birthday hasn't occurred yet this year
+    if (today.getMonth() < birthDate.getMonth() ||
+        (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+        ageYears--;
     }
 
-    document.getElementById('umurDisplay_ayah').value = age + ' Tahun';
-    document.getElementById('umur_ayah').value = age + ' Tahun';
+    var ageDisplay = ageYears + ' Tahun';
+
+    document.getElementById('umurDisplay_ayah').value = ageDisplay;
+    document.getElementById('umur_ayah').value = ageDisplay;
 }
+window.onload = function() {
+    document.getElementById('tgl_lahir_ayah').addEventListener('change', calculateAgeAyah);
+    calculateAgeAyah(); // Initial call to set the age if the date is already filled
+    document.getElementById('tgl_lahir_ibu').addEventListener('change', calculateAgeIbu);
+    calculateAgeIbu(); // Initial call to set the age if the date is already filled
+    document.getElementById('tgl_lahir').addEventListener('change', calculateAge);
+    calculateAge(); // Initial call to set the age if the date is already filled
+
+};
 </script>
 @endsection

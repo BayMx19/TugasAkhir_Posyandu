@@ -29,10 +29,13 @@
                                     <div class="mb-3">
                                         <label for="nama_anak" class="form-label">Pencatat <label
                                                 class="text-red">*</label></label>
-                                        <input type="text" class="form-control" value="{{ Auth::user()->username }}"
-                                            id="nama_anak" name="nama_anak" disabled>
-                                        <input type="hidden" name="pencatat" id="pencatat"
-                                            value="{{ Auth::user()->username }}">
+                                        <select class="form-control" id="pencatat" name="pencatat" required>
+                                            <option value="" selected disabled>Pilih Pencatat</option>
+                                            @foreach ($pencatat as $pencatat)
+                                            <option name="pencatat" data-nama="{{ $pencatat->username }}">
+                                                {{ $pencatat->username }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -406,26 +409,14 @@ function calculateAgeIbu() {
     var today = new Date();
     var birthDate = new Date(birthdate);
     var ageYears = today.getFullYear() - birthDate.getFullYear();
-    var ageMonths = today.getMonth() - birthDate.getMonth();
 
-    if (today.getDate() < birthDate.getDate()) {
-        ageMonths--;
-    }
-
-    if (ageMonths < 0) {
+    // Adjust if the birthday hasn't occurred yet this year
+    if (today.getMonth() < birthDate.getMonth() ||
+        (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
         ageYears--;
-        ageMonths = 12 - birthDate.getMonth() + today.getMonth();
     }
 
-    if (ageYears > 0) {
-        var ageDisplay = ageYears + ' Tahun';
-    } else {
-        var ageDisplay = '';
-    }
-
-    if (ageMonths > 0 || (ageMonths == 0 && today.getDate() >= birthDate.getDate())) {
-        ageDisplay += (ageDisplay ? ' ' : '') + ageMonths + ' Bulan';
-    }
+    var ageDisplay = ageYears + ' Tahun';
 
     document.getElementById('umurDisplay_ibu').value = ageDisplay;
     document.getElementById('umur_ibu').value = ageDisplay;
@@ -437,29 +428,27 @@ function calculateAgeAyah() {
     var today = new Date();
     var birthDate = new Date(birthdate);
     var ageYears = today.getFullYear() - birthDate.getFullYear();
-    var ageMonths = today.getMonth() - birthDate.getMonth();
 
-    if (today.getDate() < birthDate.getDate()) {
-        ageMonths--;
-    }
-
-    if (ageMonths < 0) {
+    // Adjust if the birthday hasn't occurred yet this year
+    if (today.getMonth() < birthDate.getMonth() ||
+        (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
         ageYears--;
-        ageMonths = 12 - birthDate.getMonth() + today.getMonth();
     }
 
-    if (ageYears > 0) {
-        var ageDisplay = ageYears + ' Tahun';
-    } else {
-        var ageDisplay = '';
-    }
-
-    if (ageMonths > 0 || (ageMonths == 0 && today.getDate() >= birthDate.getDate())) {
-        ageDisplay += (ageDisplay ? ' ' : '') + ageMonths + ' Bulan';
-    }
+    var ageDisplay = ageYears + ' Tahun';
 
     document.getElementById('umurDisplay_ayah').value = ageDisplay;
     document.getElementById('umur_ayah').value = ageDisplay;
 }
+
+window.onload = function() {
+    document.getElementById('tgl_lahir_ayah').addEventListener('change', calculateAgeAyah);
+    calculateAgeAyah(); // Initial call to set the age if the date is already filled
+    document.getElementById('tgl_lahir_ibu').addEventListener('change', calculateAgeIbu);
+    calculateAgeIbu(); // Initial call to set the age if the date is already filled
+    document.getElementById('tgl_lahir').addEventListener('change', calculateAge);
+    calculateAge(); // Initial call to set the age if the date is already filled
+
+};
 </script>
 @endsection
