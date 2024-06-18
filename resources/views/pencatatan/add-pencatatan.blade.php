@@ -538,6 +538,11 @@ function checkPredictions() {
             'Underweight: Perlu Pencegahan. Tambah asupan makanan bergizi, Berikan makanan lebih sering, Konsultasi ke dokter anak.\n';
     }
 
+
+    if (stunting === 'Tidak Stunting' || wasting === 'Tidak Wasting' || underweight === 'Tidak Underweight') {
+        keterangan +=
+            'Sehat';
+    }
     if (!stunting && !wasting && !underweight) {
         keterangan = 'Sehat';
     }
@@ -703,6 +708,7 @@ function sendColab() {
                     headers: {
                         'Content-Type': 'application/json'
                     },
+
                     body: JSON.stringify(numericData)
                 })
                 .then(response => response.json())
